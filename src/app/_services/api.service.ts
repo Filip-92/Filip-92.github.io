@@ -10,8 +10,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private secretKey: string = '${{ secrets.OPEN_WEATHER_KEY }}';
-  private geoSecretKey: string = '${{ secrets.GEO_COORDS_KEY }}'
+  private secretKey: string = environment.secretKey;
+  private geoSecretKey: string = environment.geoSecretKey;
   private units: string = 'metric';
   private lang: string = 'pl';
 

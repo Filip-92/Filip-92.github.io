@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  secretKey:  '${{secrets.OPEN_WEATHER_KEY}}',
+  geoSecretKey: '${{secrets.GEO_COORDS_KEY'
 };
 
 /*
