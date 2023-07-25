@@ -1,0 +1,15 @@
+
+
+<section class="list-with-scroll">
+    <div class="list mt-4" appScrollable #list="appScrollable" [scrollUnit]="150">
+		<div *ngFor='let in of counter(8); let i = index' class="ml-5 mr-5 text-center" style="color: white;">
+            <div>{{weatherDataForecast?.list[i]?.dt * 1000 | date:'dd/MM HH:mm'}}</div>
+            <img [src]="getIcon(weatherDataForecast?.list[i]?.weather[0]?.icon)" alt="{{weatherDataForecast?.list[i]?.weather[0]?.description}}">
+            <p>{{weatherDataForecast?.list[i].main?.temp | number:'1.0-0'}}°C</p>
+        </div>
+	</div>
+
+    <button class="scroll-button mt-4" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+
+    <button class="scroll-button mt-4" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
+</section>

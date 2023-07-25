@@ -1,0 +1,63 @@
+#currentIcon {
+    width: 185px;
+}
+
+.card {
+    background-color: rgb(156, 156, 156) !important;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+img {
+    width: 100%;
+}
+
+#hooo {
+    padding: 20px;
+    background: url('/assets/pexels-pixabay-209831.jpg');
+    }
+
+#meme {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#hourly {
+    display: flex;
+    overflow-x: scroll !important;
+    white-space:nowrap;
+}
+
+.floating-btn
+{
+    background: #009879;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    right: 500px;
+    bottom: 100px;
+    width: 80px;
+    border-radius: 8px;
+    border: 1px solid white;
+    transition: ease-in;
+    padding: 10px;
+    opacity: 0.8;
+}
+
+.floating-btn:hover {
+    cursor: pointer !important;
+    opacity: 1 !important;
+}
+
+#refresh {
+    width: 30px;
+}
+
+#refresh {
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+<div id="card" class="mt-3">
+    <div class="row">
+        <div class="col-6">
+            <p>{{newDate}}</p>
+            <img id="thumbnail" [src]="getIcon(icon)" alt="{{description}}">
+        </div>
+        <div class="col-6 mt-4">
+            <span style="display: inline-block;">
+                <p>{{tempMax | number:'1.0-0'}}°C/{{tempMin | number:'1.0-0'}}°C</p>
+                <p>{{description}}</p>
+                <p>{{maxPressure}}hPa</p>
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<p id="details" *ngIf="!moreDetails" (click)="toggleDetails()">Więcej szczegółów</p>
+
+<div *ngIf="moreDetails">
+    <div *ngFor='let number of range' class="mt-4 mb-5" style="display: inline-block; color: white;">
+        <div *ngIf="(weatherDataForecast?.list[number]?.dt * 1000 | date:'dd/MM') === newDate" class="ml-3 mr-3">
+            <div>{{weatherDataForecast?.list[number]?.dt * 1000 | date:'dd/MM HH:mm'}}</div>
+            <img [src]="getIcon(weatherDataForecast?.list[number]?.weather[0]?.icon)" alt="{{weatherDataForecast?.list[number]?.weather[0]?.description}}">
+            <p>{{weatherDataForecast?.list[number]?.main?.temp | number:'1.0-0'}}°C</p>
+        </div>
+    </div> 
+</div>
+
+<p id="details" *ngIf="moreDetails" (click)="toggleDetails()">Mniej szczegółów</p>
