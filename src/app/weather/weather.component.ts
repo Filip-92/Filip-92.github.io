@@ -48,7 +48,7 @@ export class WeatherComponent implements OnInit {
 
   initializeForm() {
     this.weatherSearchForm = this.formBuilder.group({
-      location: ["Puławy"]
+      location: ["Pulawy"]
     });
   };
 

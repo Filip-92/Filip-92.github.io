@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  secretKey:  '${{secrets.OPEN_WEATHER_KEY}}',
-  geoSecretKey: '${{secrets.GEO_COORDS_KEY}}'
+  secretKey:  'd9726bae9e95fd1aeef20591d8d3c3f3',
+  geoSecretKey: '0aa2eb4af8ce4d4b88e8c8cee2309578'
 };
 
 /*

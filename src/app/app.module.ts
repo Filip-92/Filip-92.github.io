@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ApiService } from './_services/api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 import { WeeklyForecastComponent } from './weekly-forecast/weekly-forecast.component';
 import { ScrollableDirective } from './scrollable.directive';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ScrollableDirective } from './scrollable.directive';
     HourlyWeatherComponent,
     WeeklyForecastComponent,
     ScrollableDirective,
-    SafePipe
+    SafePipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,12 @@ import { ScrollableDirective } from './scrollable.directive';
     NgbModule,
     FontAwesomeModule
   ],
-  providers: [ ApiService ],
+  providers: [
+    ApiService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
