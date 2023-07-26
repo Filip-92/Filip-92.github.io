@@ -79,7 +79,7 @@ img {
     }
 
     #timer {
-        margin-left: 50px;
+        margin-left: 20px;
     }
 
     #form {
@@ -96,6 +96,10 @@ img {
 
     #refresh {
         width: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
     }
 }
 
