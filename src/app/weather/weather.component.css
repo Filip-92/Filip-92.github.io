@@ -79,7 +79,11 @@ img {
     }
 
     #form {
-        margin-left: 50px;
+        margin-left: 20px;
+    }
+
+    #meme {
+        width: 400px;
     }
 }
 

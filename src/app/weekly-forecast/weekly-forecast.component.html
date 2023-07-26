@@ -38,9 +38,9 @@
         </div>
     </div>
 
-    <button class="scroll-button mt-4" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+    <button class="scroll-button mt-4" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
 
-    <button class="scroll-button mt-4" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
+    <button class="scroll-button mt-4" [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
 </section>
 
 
