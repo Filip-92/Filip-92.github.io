@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './weather/weather.component';
+import { SafePipe, WeatherComponent } from './weather/weather.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -23,7 +23,8 @@ import { ScrollableDirective } from './scrollable.directive';
     CurrentWeatherComponent,
     HourlyWeatherComponent,
     WeeklyForecastComponent,
-    ScrollableDirective
+    ScrollableDirective,
+    SafePipe
   ],
   imports: [
     BrowserModule,

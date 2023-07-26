@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HelperService } from '../_services/helper.service';
 
 @Component({
   selector: 'app-current-weather',
@@ -7,6 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class CurrentWeatherComponent {
   @Input() weatherData: any;
+
+  constructor(private helper: HelperService) {}
 
   getIcon(icon: any) {
     var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";

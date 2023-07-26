@@ -8,7 +8,6 @@ import { Component, Input, Pipe } from '@angular/core';
 
 export class HourlyWeatherComponent {
   @Input() weatherDataForecast: any;
-  items = ["Item 1"];
 
   getIcon(icon: any) {
     var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";

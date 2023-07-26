@@ -73,6 +73,14 @@ img {
     #current {
         width: 100%;
     }
+
+    #timer {
+        margin-left: 50px;
+    }
+
+    #form {
+        margin-left: 50px;
+    }
 }
 
 #gif {

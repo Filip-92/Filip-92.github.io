@@ -44,6 +44,7 @@ export class WeeklyForecastComponent {
       this.start = this.range[0]
       this.setDate(this.days);
       this.loopThroughData();
+      this.innerWidth = window.innerWidth;
     }
 
     setDate(days: number) {

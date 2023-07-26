@@ -1,14 +1,14 @@
 import { Component, ElementRef, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../_services/api.service';
-import {formatDate} from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-import { DomSanitizer, Meta, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) { }
-  transform(url: any) {
+  transform(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
@@ -80,7 +80,6 @@ export class WeatherComponent implements OnInit {
       .getWeather(latitude, longitude)
       .subscribe(response => {
         this.weatherData = response;
-        console.log(this.weatherData)
     });
   }
 
@@ -111,12 +110,10 @@ export class WeatherComponent implements OnInit {
         img.src = this?.meme?.url;
         this.meme.url = this.addImageWatermark(this.meme?.url);
       }
-      console.log(this.meme)
+      if(this.meme?.url?.includes("youtube") || this.meme?.url?.includes("youtu.be")) {
+        this.trustedUrl = this.meme?.url;
+      }
   });
-  if(this.meme?.url?.includes("youtube") || this.meme?.url?.includes("youtu.be")) {
-    this.trustedUrl = this.meme?.url;
-  }
-
 }
 
   scrollToMeme(el: HTMLElement) {
@@ -144,7 +141,7 @@ export class WeatherComponent implements OnInit {
   }
 
   checkIfScrolled() {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 200) {
       return true;
     } else {
       return false;

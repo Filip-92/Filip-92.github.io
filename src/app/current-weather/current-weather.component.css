@@ -7,6 +7,18 @@
     #currentIcon {
         width: 100px;
     }
+
+    #details {
+        margin-left: 0px !important;
+    }
+
+    #iconAndTemp {
+        margin-left: 15% !important;
+    }
+}
+
+#details {
+    margin-left: 25%;
 }
 
 #gif {

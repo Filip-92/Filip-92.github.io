@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class HelperService {
 
   constructor() { }
+
+  getIcon(icon: any) {
+    var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+    return iconurl;
+  }
 }
