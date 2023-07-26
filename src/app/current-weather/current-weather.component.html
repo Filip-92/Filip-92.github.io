@@ -7,11 +7,11 @@
         </div>
         <div class="col-4 text-left mt-4" id="details">
             <p>Opis: {{weatherData.weather[0].description}}</p>
-            <p>Prędkość wiatru: {{weatherData.wind.speed}}m/s</p>
+            <p><i class="fa fa-wind mr-1"></i>Wiatr: {{weatherData.wind.speed}}m/s</p>
             <p>Ciśnienie: {{weatherData.main.pressure}}hPa</p>
-            <p>Wilgotność: {{weatherData.main.humidity}}%</p>
-            <p>Zachód Słońca: {{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
-            <p>Wschód Słońca: {{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
+            <p><i class="fa fa-droplet mr-1"></i>Wilgotność: {{weatherData.main.humidity}}%</p>
+            <p><i class="fa fa-sun mr-1"></i>Wschód: {{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
+            <p><i class="fa fa-moon mr-1"></i>Zachód: {{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
         </div>
     </div>
 </div>

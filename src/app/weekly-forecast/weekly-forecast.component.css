@@ -1,5 +1,5 @@
 #card {
-    width: 30%;
+    
     margin-left: auto;
     margin-right: auto;
 }
@@ -10,10 +10,17 @@
 
 #details {
     color: greenyellow;
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #details:hover {
     color: red;
+    border: 1px solid red;
     cursor: pointer;
 }
 
@@ -78,6 +85,11 @@
     margin-right: 50px;
   }
 
+  #dayNight {
+    margin-top: -10px;
+    font-size: 10px;
+  }
+
   @media screen and (max-width: 1000px) {
 
     #icons {
@@ -85,7 +97,11 @@
       margin-left: 0px !important
     }
 
-    #card {
-        width: 50%;
+    #thumbnail {
+        width: 50px;
     }
+
+    /* #card {
+        width: 50%;
+    } */
 }

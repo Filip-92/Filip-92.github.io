@@ -31,9 +31,12 @@ export class WeeklyForecastComponent {
     protected tempAvg: number;
     protected maxPressure: number;
     protected icon: number;
+    protected nightIcon: number;
     protected description: string;
     protected moreDetails: boolean = false;
     public innerWidth: any;
+    protected nextDay: any[] = [];
+    protected day: any;
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
@@ -50,6 +53,11 @@ export class WeeklyForecastComponent {
     setDate(days: number) {
       this.newDate = formatDate(this.currentDate.setDate(this.currentDate.getDate() + days), 'dd/MM', 'en')
       return this.newDate;
+    }
+
+    getDayName(dateStr, locale) {
+        var date = new Date(dateStr);
+        return date.toLocaleDateString(locale, { weekday: 'long' });        
     }
     
     getIcon(icon: any) {
@@ -74,9 +82,14 @@ export class WeeklyForecastComponent {
           data.push(this.weatherDataForecast.list[i]?.main?.temp)
           pressure.push(this.weatherDataForecast.list[i]?.main?.pressure)
           var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
+          this.nextDay.push(date)
           if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '14:00') {
+            console.log(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
+          }
+          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '23:00') {
+            icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
           }
         }
       }
@@ -86,6 +99,8 @@ export class WeeklyForecastComponent {
       this.maxPress(pressure)
       this.chooseIcon(icons)
       this.chooseDescription(descriptions);
+      console.log(formatDate(this.currentDate.setDate(this.nextDay[0].getDate()), 'EEEE', 'en'))
+      this.day = formatDate(this.currentDate.setDate(this.nextDay[0].getDate()), 'EEEE', 'en');
     }
 
     minTemp(data: any) {
@@ -133,6 +148,7 @@ export class WeeklyForecastComponent {
 
     chooseIcon(icons: any) {
       this.icon = icons[0];
+      this.nightIcon = icons[1];
     }
 
     chooseDescription(descriptions: any) {
@@ -141,5 +157,25 @@ export class WeeklyForecastComponent {
 
     toggleDetails() {
       this.moreDetails = !this.moreDetails;
+    }
+
+    convertDayToPL(day: string) {
+      var newDay = '';
+      if (day === 'Monday') {
+        newDay = 'Poniedziałek'
+      } else if (day === 'Tuesday') {
+        newDay = 'Wtorek'
+      } else if (day === 'Wednesday') {
+        newDay = 'Środa'
+      } else if (day === 'Thursday') {
+        newDay = 'Czwartek'
+      } else if (day === 'Friday') {
+        newDay = 'Piątek'
+      } else if (day === 'Saturday') {
+        newDay = 'Sobota'
+      } else {
+        newDay = 'Niedziela'
+      }
+      return newDay
     }
 }
