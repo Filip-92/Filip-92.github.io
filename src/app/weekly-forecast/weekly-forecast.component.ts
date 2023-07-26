@@ -84,7 +84,6 @@ export class WeeklyForecastComponent {
           var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
           this.nextDay.push(date)
           if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '14:00') {
-            console.log(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
           }
@@ -99,7 +98,6 @@ export class WeeklyForecastComponent {
       this.maxPress(pressure)
       this.chooseIcon(icons)
       this.chooseDescription(descriptions);
-      console.log(formatDate(this.currentDate.setDate(this.nextDay[0].getDate()), 'EEEE', 'en'))
       this.day = formatDate(this.currentDate.setDate(this.nextDay[0].getDate()), 'EEEE', 'en');
     }
 

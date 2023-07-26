@@ -19,7 +19,7 @@
             [formGroup]="weatherSearchForm"
             (ngSubmit)="checkCoordinates()">
             <div id="form" class="row mt-4">
-                <div class="form-group col-8">
+                <div class="form-group col-8 col-md-7">
                     <p class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
@@ -30,12 +30,12 @@
                         formControlName="location"
                         >
                 </div>
-                <div class="text-center col-3">
+                <div class="text-center col-4 col-md-3">
                     <button type="submit" class="btn btn-success btn-small mb-3">
                         Szukaj<i class="fa fa-search ml-2"></i>
                     </button>
-                    <button class="btn btn-small btn-warning" (click)="scrollToMeme(target)">
-                        Losuj mema
+                    <button class="btn btn-small btn-danger" style="color: white;" (click)="scrollToMeme(target)">
+                        Losuj mema<i class="fa fa-dice ml-2"></i>
                     </button>
                 </div>
             </div>
