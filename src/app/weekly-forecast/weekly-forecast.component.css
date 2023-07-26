@@ -101,6 +101,10 @@
         width: 50px;
     }
 
+    #day {
+        font-size: 9px;
+    }
+
     /* #card {
         width: 50%;
     } */

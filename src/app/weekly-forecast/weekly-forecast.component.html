@@ -1,18 +1,18 @@
 <div id="card" class="mt-3">
     <h4 class="mb-3">{{newDate}}</h4>
     <div class="row">
-        <div class="col-3 mt-3" style="color: white">
-            <p>{{convertDayToPL(day)}}</p>
+        <div class="col-2 mt-3" style="color: white">
+            <p id="day">{{convertDayToPL(day)}}</p>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <img id="thumbnail" [src]="getIcon(icon)" alt="{{description}}">
             <img id="thumbnail" [src]="getIcon(nightIcon)" alt="{{description}}">
             <div><p id="dayNight">Dzień / Noc</p></div>
         </div>
-        <div class="col-2 mt-3">
+        <div class="col-3 mt-3">
             <p>{{tempMax | number:'1.0-0'}}°C / {{tempMin | number:'1.0-0'}}°C</p>
         </div>
-        <div class="col-4">
+        <div id="day" class="col-3">
             <span style="display: inline-block;">
                 <p>{{description}}</p>
                 <p>{{maxPressure}}hPa</p>

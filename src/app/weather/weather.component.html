@@ -2,7 +2,6 @@
     <div class="text-right">
         <button class="floating-btn" *ngIf="checkIfScrolled()" (click)="scrollToTop()">&#8593; Top</button>
     </div>
-
     <div class="card mt-3 mb-3">
         <div class="text-center" id="current">
             <div id="timer" class="text-left mt-3">
@@ -11,7 +10,6 @@
                     <span (click)="refresh()">
                         <img id="refresh" src="/assets/refresh.png" alt="" (click)="refresh()">
                     </span>
-                    
                 </h3>
             </div>
             <app-current-weather [weatherData]="weatherData"></app-current-weather>
@@ -19,7 +17,7 @@
             [formGroup]="weatherSearchForm"
             (ngSubmit)="checkCoordinates()">
             <div id="form" class="row mt-4">
-                <div class="form-group col-8 col-md-7">
+                <div class="form-group col-7 col-md-7">
                     <p class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
@@ -30,7 +28,7 @@
                         formControlName="location"
                         >
                 </div>
-                <div class="text-center col-4 col-md-3">
+                <div id="buttons" class="text-center col-4 col-md-3">
                     <button type="submit" class="btn btn-success btn-small mb-3">
                         Szukaj<i class="fa fa-search ml-2"></i>
                     </button>
