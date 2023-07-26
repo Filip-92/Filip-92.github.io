@@ -1,9 +1,7 @@
-
-
 <section class="list-with-scroll">
     <div class="list mt-4" appScrollable #list="appScrollable" [scrollUnit]="150">
-		<div *ngFor='let in of counter(8); let i = index' class="ml-5 mr-5 text-center" style="color: white;">
-            <div>{{weatherDataForecast?.list[i]?.dt * 1000 | date:'dd/MM HH:mm'}}</div>
+		<div *ngFor='let in of counter(8); let i = index' id="icons" class="text-center" style="color: white;">
+            <p>{{weatherDataForecast?.list[i]?.dt * 1000 | date:'dd/MM HH:mm'}}</p>
             <img [src]="getIcon(weatherDataForecast?.list[i]?.weather[0]?.icon)" alt="{{weatherDataForecast?.list[i]?.weather[0]?.description}}">
             <p>{{weatherDataForecast?.list[i].main?.temp | number:'1.0-0'}}°C</p>
         </div>

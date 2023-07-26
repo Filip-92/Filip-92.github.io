@@ -1,1 +1,21 @@
-<p>current-weather works!</p>
+<div *ngIf="weatherData !== undefined">
+    <div class="row">
+
+        <div class="col-6 text-left">
+            <img id="currentIcon" [src]="getIcon(weatherData.weather[0].icon)" alt="{{weatherData.weather[0].description}}">
+            <p>Temp: {{weatherData.main.temp | number:'1.0-0'}}°C</p>
+            <p>Temp odczuwalna: {{weatherData.main.feels_like | number:'1.0-0'}}°C</p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-6 col-md-4 text-left mt-4">
+            <!-- <p>Temp min: {{weatherData.main.temp_min | number:'1.0-0'}}°C</p>
+            <p>Temp max: {{weatherData.main.temp_max | number:'1.0-0'}}°C</p> -->
+            <p>Opis: {{weatherData.weather[0].description}}</p>
+            <p>Prędkość wiatru: {{weatherData.wind.speed}}m/s</p>
+            <p>Ciśnienie: {{weatherData.main.pressure}}hPa</p>
+            <p>Wilgotność: {{weatherData.main.humidity}}%</p>
+            <p>Zachód Słońca: {{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
+            <p>Wschód Słońca: {{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
+        </div>
+    </div>
+</div>

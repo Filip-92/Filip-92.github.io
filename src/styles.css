@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background: url('/assets/pexels-pixabay-209831.jpg');
+    background-color: #1b395b;
 }
 
 h3 {
@@ -24,4 +24,11 @@ p {
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
     background: #555;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+        p {
+            font-size: 10px;
+        }
     }

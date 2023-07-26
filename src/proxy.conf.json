@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target" : "https://ddmemes.com.pl/api/memes/get-random-meme/",
+        "secure" : true,
+        "logLevel" : "debug"
+    }
+}

@@ -7,9 +7,8 @@
     </div>
 
     <!-- <img src="/assets/rain.gif" alt=""> -->
-
-    <div class="mt-5">
-        <div class="text-center" style="width: 50%; margin-left: auto; margin-right: auto;">
+    <div class="card mt-3 mb-3">
+        <div class="text-center" id="current">
             <div class="text-left mt-3">
                 <h3>
                     <i class="fa fa-clock-o"></i>{{time | date:'H:mm':'UTC ' + sign + UTC}}
@@ -19,30 +18,13 @@
                     
                 </h3>
             </div>
-            <div *ngIf="weatherData !== undefined">
-                <div class="row">
-                    <div class="col-6 text-left">
-                        <img id="currentIcon" [src]="getIcon(weatherData.weather[0].icon)" alt="{{weatherData.weather[0].description}}">
-                        <p>Temp: {{weatherData.main.temp | number:'1.0-0'}}°C</p>
-                        <p>Temp odczuwalna: {{weatherData.main.feels_like | number:'1.0-0'}}°C</p>
-                    </div>
-                    <div class="col-6 text-left mt-4">
-                        <!-- <p>Temp min: {{weatherData.main.temp_min | number:'1.0-0'}}°C</p>
-                        <p>Temp max: {{weatherData.main.temp_max | number:'1.0-0'}}°C</p> -->
-                        <p>Opis: {{weatherData.weather[0].description}}</p>
-                        <p>Prędkość wiatru: {{weatherData.wind.speed}}m/s</p>
-                        <p>Ciśnienie: {{weatherData.main.pressure}}hPa</p>
-                        <p>Wilgotność: {{weatherData.main.humidity}}%</p>
-                        <p>Zachód Słońca: {{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
-                        <p>Wschód Słońca: {{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
-                    </div>
-                </div>
-            </div>
+            <app-current-weather [weatherData]="weatherData"></app-current-weather>
             <form
             [formGroup]="weatherSearchForm"
             (ngSubmit)="checkCoordinates()">
             <div class="row mt-4">
-                <div class="form-group col-7">
+                <div class="form-group col-8">
+                    <p class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
                         type="text"
@@ -52,13 +34,11 @@
                         formControlName="location"
                         >
                 </div>
-                <div class="text-center col-2">
-                    <button type="submit" class="btn btn-success btn-small">
+                <div class="text-center col-3">
+                    <button type="submit" class="btn btn-success btn-small mb-3">
                         Szukaj<i class="fa fa-search ml-2"></i>
                     </button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-small btn-success" (click)="scrollToMeme(target)">
+                    <button class="btn btn-small btn-warning" (click)="scrollToMeme(target)">
                         Losuj mema
                     </button>
                 </div>
@@ -66,10 +46,19 @@
         </form>
         </div>
     </div>
+    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '04d'">
+        <img src="/assets/cloudy.gif" alt="">
+    </div>
+    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '10d'">
+        <img src="/assets/rainy.gif" alt="">
+    </div>
+    <h3 class="text-center mt-3 mb-4">
+        Godzinowo
+    </h3>
     <div id="hourly" class="card mt-3">
         <app-hourly-weather [weatherDataForecast]="weatherDataForecast"></app-hourly-weather>
     </div>
-    <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-5">
+    <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-3">
         <h3 class="mt-3 mb-4">Prognoza</h3>
         <div class="card">
             <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="1"></app-weekly-forecast>

@@ -1,0 +1,14 @@
+#currentIcon {
+    width: 185px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    #currentIcon {
+        width: 100px;
+    }
+}
+
+#gif {
+    width: 100%;
+}

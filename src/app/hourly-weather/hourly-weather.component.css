@@ -54,3 +54,15 @@
     order: -1; /* To pevent ExpressionChangedAfterItHasBeenCheckedError */
   }
   
+  #icons {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  @media screen and (max-width: 1000px) {
+
+    #icons {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+}

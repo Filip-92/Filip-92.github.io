@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
@@ -33,6 +33,12 @@ export class WeeklyForecastComponent {
     protected icon: number;
     protected description: string;
     protected moreDetails: boolean = false;
+    public innerWidth: any;
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+      this.innerWidth = window.innerWidth;
+    }
 
     ngOnInit(): void {
       this.start = this.range[0]

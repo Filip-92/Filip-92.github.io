@@ -33,6 +33,12 @@ export class ApiService {
     );
   }
 
+  getPrecipitation(lat: any, long: any) {
+    return this.http.get(
+      'https://tile.openweathermap.org/map/precipitation/5/' + lat + '/' + long +'.png?appid=' + this.secretKey
+    )
+  }
+
   getMeme() {
     return this.http.get(
       'https://ddmemes.com.pl/api/memes/get-random-meme/'

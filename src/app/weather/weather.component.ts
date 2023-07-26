@@ -23,6 +23,7 @@ export class WeatherComponent implements OnInit {
   protected weatherSearchForm: FormGroup;
   protected weatherData: any;
   protected weatherDataForecast: any;
+  protected precipitation: any;
   protected meme: any;
   protected coordinates: any;
   protected latitude: any;
@@ -69,6 +70,7 @@ export class WeatherComponent implements OnInit {
       this.longitude = this.coordinates.features[0].geometry.coordinates[0]
       this.sendToOpenWeather(this.latitude, this.longitude);
       this.sendToOpenWeatherForecast(this.latitude, this.longitude);
+      this.checkPrecipitationMap(30, 20);
       this.showTime()
     });
   }
@@ -87,6 +89,15 @@ export class WeatherComponent implements OnInit {
     .getForecast(latitude, longitude)
     .subscribe(response => {
       this.weatherDataForecast = response;
+    });
+  }
+
+  checkPrecipitationMap(latitude: any, longitude: any) {
+    this.apiService
+    .getPrecipitation(latitude, longitude)
+    .subscribe(response => {
+      this.precipitation = response;
+      console.log(this.precipitation)
     });
   }
 
@@ -156,4 +167,6 @@ export class WeatherComponent implements OnInit {
     }
     return watermarkedUrl;
   }
+
+  
 }
