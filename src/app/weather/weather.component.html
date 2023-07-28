@@ -7,7 +7,7 @@
             <div id="timer" class="row mt-3">
                 <div class="col-6 col-md-6 text-left">
                     <h3>
-                        <i class="fa fa-clock mr-2"></i>{{time | date:'H:mm':'UTC ' + sign + UTC}}
+                        <i class="fa fa-clock mr-2"></i>{{time | date:'HH:mm':'UTC ' + sign + UTC}}
                         <span (click)="refresh()">
                             <img id="refresh" src="/assets/refresh.png" alt="" (click)="refresh()">
                         </span>
@@ -17,6 +17,9 @@
                     <h3>
                         {{weatherData?.name}}
                     </h3>
+                    <h6 *ngIf="weatherData?.name !== coordinates.features[0]?.properties?.city">
+                        ({{coordinates.features[0]?.properties?.city}})
+                    </h6>
                 </div>
             </div>
             <app-current-weather [weatherData]="weatherData"></app-current-weather>
@@ -24,14 +27,14 @@
             [formGroup]="weatherSearchForm"
             (ngSubmit)="checkCoordinates()">
             <div id="form" class="row mt-4">
-                <div class="form-group col-7 col-md-7">
+                <div class="form-group col-7 col-md-8">
                     <p class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
                         type="text"
                         id="weatherLocation"
                         aria-describedby="weatherLocation"
-                        placeholder="Please input a location"
+                        placeholder="Wpisz miasto"
                         formControlName="location"
                         >
                 </div>
@@ -47,7 +50,7 @@
         </form>
         </div>
     </div>
-    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '04d'">
+    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '04d' || weatherData?.weather[0]?.icon === '03d'">
         <img src="/assets/cloudy.gif" alt="">
     </div>
     <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '10d'">

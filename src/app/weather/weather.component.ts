@@ -48,7 +48,7 @@ export class WeatherComponent implements OnInit {
 
   initializeForm() {
     this.weatherSearchForm = this.formBuilder.group({
-      location: ["Pulawy"]
+      location: ["Puławy, lubelskie"]
     });
   };
 
@@ -66,8 +66,11 @@ export class WeatherComponent implements OnInit {
     .getCoords(this.weatherSearchForm.value.location)
     .subscribe(response => {
       this.coordinates = response;
+      console.log(this.coordinates)
       this.latitude = this.coordinates.features[0].geometry.coordinates[1]
       this.longitude = this.coordinates.features[0].geometry.coordinates[0]
+      // this.latitude = this.coordinates.results[0].bbox.lon1
+      // this.longitude = this.coordinates.results[0].bbox.lat1
       this.sendToOpenWeather(this.latitude, this.longitude);
       this.sendToOpenWeatherForecast(this.latitude, this.longitude);
       this.checkPrecipitationMap(30, 20);

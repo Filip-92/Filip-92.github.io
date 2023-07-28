@@ -63,7 +63,7 @@ img {
 }
 
 #current {
-    width: 60%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -103,8 +103,22 @@ img {
     }
 }
 
+input {
+    background-color: grey;
+    color: white;
+}
+
+input:focus {
+    background-color: grey;
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+}
+
 #gif {
-    max-height: 150px;
+    max-height: 200px;
     overflow: hidden;
     border: 1px solid white;
 }
