@@ -94,6 +94,10 @@ img {
         font-size: 9px;
     }
 
+    #buttons {
+        margin-top: 30px !important;
+    }    
+
     #refresh {
         width: 20px;
     }
