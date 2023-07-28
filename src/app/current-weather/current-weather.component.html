@@ -7,20 +7,20 @@
         </div>
         <div id="details" class="row col-5 mt-5">
             <div class="text-left">
-                <p><i class="fa fa-file mr-1"></i>Opis: </p>
                 <p><i class="fa fa-wind mr-1"></i>Wiatr: </p>
                 <p><i class="fa fa-tachometer mr-1"></i>Ciśnienie: </p>
                 <p><i class="fa fa-droplet mr-1"></i>Wilgotność: </p>
                 <p><i class="fa fa-sun mr-1"></i>Wschód: </p>
                 <p><i class="fa fa-moon mr-1"></i>Zachód: </p>
+                <p><i class="fa fa-file mr-1"></i>Opis: </p>
             </div>
             <div class="text-right">
-                <!-- <p>{{weatherData.weather[0].description}}</p> -->
                 <p>{{weatherData.wind.speed * 3.6 | number:'1.0-1'}} km/h</p>
                 <p>{{weatherData.main.pressure}} hPa</p>
                 <p>{{weatherData.main.humidity}}%</p>
                 <p>{{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
                 <p>{{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
+                <p>{{weatherData.weather[0].description}}</p>
             </div>
         </div>
     </div>

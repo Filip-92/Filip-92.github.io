@@ -101,6 +101,10 @@ img {
     h3 {
         font-size: 18px;
     }
+
+    input {
+        font-size: 10px;
+    }
 }
 
 input {
