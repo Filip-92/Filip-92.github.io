@@ -10,14 +10,14 @@
         </div>
         <div id="details" class="row col-5 mt-5 text-left">
             <p class="ml-3"><i class="fa fa-file mr-1"></i>Opis: {{weatherData.weather[0].description}}</p>
-            <div class="col-6">
+            <div class="col-7">
                 <p><i class="fa fa-wind mr-1"></i>Wiatr: </p>
                 <p><i class="fa fa-tachometer mr-1"></i>Ciśnienie: </p>
                 <p><i class="fa fa-droplet mr-1"></i>Wilgotność: </p>
                 <p><i class="fa fa-sun mr-1"></i>Wschód: </p>
                 <p><i class="fa fa-moon mr-1"></i>Zachód: </p>
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <p>{{weatherData.wind.speed * 3.6 | number:'1.0-1'}} km/h</p>
                 <p>{{weatherData.main.pressure}} hPa</p>
                 <p>{{weatherData.main.humidity}}%</p>
