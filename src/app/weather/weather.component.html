@@ -27,8 +27,8 @@
             [formGroup]="weatherSearchForm"
             (ngSubmit)="checkCoordinates()">
             <div id="form" class="row mt-4">
-                <div class="form-group col-8 col-md-8">
-                    <p class="text-left">Wpisz nazwę miasta:</p>
+                <div class="form-group col-8 col-md-9 col-md-8">
+                    <p id="label" class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
                         type="text"
@@ -38,7 +38,7 @@
                         formControlName="location"
                         >
                 </div>
-                <div id="buttons" class="text-left col-4 col-md-3">
+                <div id="buttons" class="text-left col-4 col-md-3 col-md-3">
                     <button type="submit" class="btn btn-success btn-small mb-3">
                         Szukaj<i class="fa fa-search ml-2"></i>
                     </button>
