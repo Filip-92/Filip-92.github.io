@@ -1,5 +1,5 @@
 #currentIcon {
-    width: 185px;
+    width: 150px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -14,6 +14,10 @@
 
     #iconAndTemp {
         margin-left: 10% !important;
+    }
+
+    button {
+        font-size: 9px;
     }
 }
 

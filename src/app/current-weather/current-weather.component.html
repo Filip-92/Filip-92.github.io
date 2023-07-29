@@ -4,14 +4,26 @@
             <img id="currentIcon" [src]="getIcon(weatherData.weather[0].icon)" alt="{{weatherData.weather[0].description}}">
             <p>Temp: {{weatherData.main.temp | number:'1.0-0'}}°C</p>
             <p>Temp odczuwalna: {{weatherData.main.feels_like | number:'1.0-0'}}°C</p>
+            <button class="btn btn-small btn-danger" style="color: white;" (click)="scrollToMeme(target)">
+                Losuj mema<i class="fa fa-dice ml-2"></i>
+            </button>
         </div>
-        <div id="details" class="col-5 mt-5 text-left">
-            <p><i class="fa fa-file mr-1"></i>Opis: {{weatherData.weather[0].description}}</p>
-            <p><i class="fa fa-wind mr-1"></i>Wiatr: {{weatherData.wind.speed * 3.6 | number:'1.0-1'}} km/h</p>
-            <p><i class="fa fa-tachometer mr-1"></i>Ciśnienie: {{weatherData.main.pressure}} hPa</p>
-            <p><i class="fa fa-droplet mr-1"></i>Wilgotność: {{weatherData.main.humidity}}%</p>
-            <p><i class="fa fa-sun mr-1"></i>Wschód: {{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
-            <p><i class="fa fa-moon mr-1"></i>Zachód: {{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
+        <div id="details" class="row col-5 mt-5 text-left">
+            <p class="ml-3"><i class="fa fa-file mr-1"></i>Opis: {{weatherData.weather[0].description}}</p>
+            <div class="col-6">
+                <p><i class="fa fa-wind mr-1"></i>Wiatr: </p>
+                <p><i class="fa fa-tachometer mr-1"></i>Ciśnienie: </p>
+                <p><i class="fa fa-droplet mr-1"></i>Wilgotność: </p>
+                <p><i class="fa fa-sun mr-1"></i>Wschód: </p>
+                <p><i class="fa fa-moon mr-1"></i>Zachód: </p>
+            </div>
+            <div class="col-6">
+                <p>{{weatherData.wind.speed * 3.6 | number:'1.0-1'}} km/h</p>
+                <p>{{weatherData.main.pressure}} hPa</p>
+                <p>{{weatherData.main.humidity}}%</p>
+                <p>{{weatherData.sys.sunrise * 1000 | date:'HH:mm'}}</p>
+                <p>{{weatherData.sys.sunset * 1000 | date:'HH:mm'}}</p>
+            </div>
         </div>
     </div>
 </div>

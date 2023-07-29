@@ -119,10 +119,6 @@ export class WeatherComponent implements OnInit {
   });
 }
 
-  scrollToMeme(el: HTMLElement) {
-    el.scrollIntoView();
-  }
-
   getIcon(icon: any) {
     var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
     return iconurl;
