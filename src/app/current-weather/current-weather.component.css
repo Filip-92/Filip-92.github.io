@@ -10,6 +10,7 @@
 
     #details {
         margin-left: 0px !important;
+        margin-top: 20px !important;
     }
 
     #iconAndTemp {
@@ -23,6 +24,7 @@
 
 #details {
     margin-left: 25%;
+    margin-top: 50px;
 }
 
 #gif {
