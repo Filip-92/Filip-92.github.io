@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1690644011221,
+  "timestamp": 1690800599511,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -76,7 +76,7 @@
     "/assets/refresh.png": "fbcae70196adcc474720c380743ba6fb0be047fa",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "56fc4b8f6acc86b36a337206ca6e8bc178de0a52",
+    "/index.html": "d0a2685f0d9e5504cd01b60aeee680333bb01dad",
     "/main.aabdeb82b76130e2.js": "e8843c4424883adfafc2c3cd47b7a7703ef071de",
     "/manifest.webmanifest": "befdfaff15587e60ece4ef5a652d5ea07fc74183",
     "/polyfills.730403bf8432ed43.js": "65d89837973c7eb3b45d2ea2c8469e5b2cae8b91",
