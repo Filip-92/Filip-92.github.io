@@ -17,8 +17,8 @@
                     <h3>
                         {{weatherData?.name}}
                     </h3>
-                    <h6 *ngIf="weatherData?.name !== coordinates.features[0]?.properties?.city">
-                        ({{coordinates.features[0]?.properties?.city}})
+                    <h6 *ngIf="weatherData?.name !== coordinates?.features[0]?.properties?.city && coordinates?.features[0]?.properties?.city?.length > 0">
+                        ({{coordinates?.features[0]?.properties?.city}})
                     </h6>
                 </div>
             </div>
@@ -78,8 +78,8 @@
         </div>
     </div>
 
-    <div id="meme" class="text-center mt-5 mb-5">
-        <!-- <img src="{{meme?.url}}" alt=""> -->
+    <div id="meme" class="text-center">
+        <h3 class="mt-3 mb-4">Losowy mem</h3>
         <div *ngIf="meme?.url?.includes('youtube') && meme?.url?.length < 1000">
             <iframe width="400" height="300" [src]="trustedUrl | safe" allowfullscreen></iframe>
         </div>

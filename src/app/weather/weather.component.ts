@@ -4,6 +4,7 @@ import { ApiService } from '../_services/api.service';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LocationService } from '../_services/location.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -34,7 +35,7 @@ export class WeatherComponent implements OnInit {
   protected sign: any;
   protected trustedUrl: string;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private locationService: LocationService) {
     
   }
 
@@ -44,11 +45,24 @@ export class WeatherComponent implements OnInit {
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
+
+    console.log(this.coordinates?.features[0]?.properties?.city)
+
+    this.locationService.getPosition().then(pos=>
+      {
+         if (pos.lng !== undefined && pos.lat !== undefined) {
+          this.sendToOpenWeather(pos.lat, pos.lng);
+          this.sendToOpenWeatherForecast(pos.lat, pos.lng);
+          this.showTime();
+         } else {
+          this.checkCoordinates();
+         }
+      });
   }
 
   initializeForm() {
     this.weatherSearchForm = this.formBuilder.group({
-      location: ["Puławy, lubelskie"]
+      location: [""]
     });
   };
 
@@ -57,8 +71,8 @@ export class WeatherComponent implements OnInit {
   }
 
   showTime() {
-    this.sign = this.coordinates.features[0].properties.timezone.offset_DST[0];
-    this.UTC = Number(this.coordinates.features[0].properties.timezone.offset_DST.substring(1, 3));
+    this.sign = this.coordinates?.features[0]?.properties?.timezone?.offset_DST[0];
+    this.UTC = Number(this.coordinates?.features[0]?.properties?.timezone?.offset_DST?.substring(1, 3));
   }
 
   checkCoordinates() {
@@ -67,8 +81,8 @@ export class WeatherComponent implements OnInit {
     .subscribe(response => {
       this.coordinates = response;
       console.log(this.coordinates)
-      this.latitude = this.coordinates.features[0].geometry.coordinates[1]
-      this.longitude = this.coordinates.features[0].geometry.coordinates[0]
+      this.latitude = this.coordinates?.features[0]?.geometry?.coordinates[1]
+      this.longitude = this.coordinates?.features[0]?.geometry?.coordinates[0]
       // this.latitude = this.coordinates.results[0].bbox.lon1
       // this.longitude = this.coordinates.results[0].bbox.lat1
       this.sendToOpenWeather(this.latitude, this.longitude);

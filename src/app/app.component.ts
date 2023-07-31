@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weather-meme-app';
+  public lat;
+  public long;
+
+  public ngOnInit(): void {
+
+  }
+
 }
