@@ -94,6 +94,18 @@
     transform: rotate(-90deg);
   }
 
+  #details {
+    margin-bottom: -5px;
+  }
+
+  #temp {
+    margin-top: 30px;
+  }
+
+  #day {
+    margin-top: 10px;
+  }
+
   @media screen and (max-width: 1000px) {
 
     #icons {
@@ -110,9 +122,20 @@
         margin-top: 10px;
     }
 
+    #temp {
+      margin-top: 20px !important;
+    }
+
     #details {
       margin-top: -10px !important;
       margin-bottom: -10px !important;
+    }
+
+    #currentDay {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* #card {

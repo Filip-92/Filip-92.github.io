@@ -87,7 +87,7 @@
         </div>
         <img src="{{meme?.url}}" class="card-img-top" onError="this.src='https://memegenerator.net/img/images/14687350.jpg'" *ngIf="checkURL(meme?.url) && !meme?.url?.includes('youtube-nocookie') && meme?.url?.length < 1000"/>
         <video src="{{meme?.url}}" class="card-img-top" *ngIf="!checkURL(meme?.url) && !meme?.url?.includes('youtube-nocookie') && meme?.url?.length < 1000" controls></video>
-        <button class="btn btn-small btn-success mt-3" (click)="getMeme()">Losuj</button>
+        <button class="btn btn-small btn-danger mt-3 mb-3" (click)="getMeme()">Losuj<i class="fa fa-dice ml-2"></i></button>
     </div>
     <div #target></div>
 </div>
