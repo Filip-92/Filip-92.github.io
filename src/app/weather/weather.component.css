@@ -101,6 +101,10 @@ img {
         width: 350px;
     }
 
+    iframe {
+        width: 350px !important;
+    }
+
     button {
         font-size: 9px;
     }
