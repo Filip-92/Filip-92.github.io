@@ -135,6 +135,8 @@ export class WeatherComponent implements OnInit {
         var img = new Image();
         img.src = this?.meme?.url;
         this.meme.url = this.addImageWatermark(this.meme?.url);
+      } else {
+        this.meme.url = this.addVideoWatermark(this.meme?.url);
       }
       if(this.meme?.url?.includes("youtube") || this.meme?.url?.includes("youtu.be")) {
         this.trustedUrl = this.meme?.url;
@@ -180,12 +182,15 @@ export class WeatherComponent implements OnInit {
 
   addImageWatermark(imageUrl: string) {
     if (!imageUrl?.includes(".gif")) {
-      var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/w_800/w_0.3,l_Watermark_image,o_50,c_scale,g_south_east/");
+      var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/w_800/w_0.25,l_Watermark_image_2.0,o_50,c_scale,g_south_east/");
     } else {
-      var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/l_Watermark_image,w_0.2,o_50,c_scale,g_south_east/");
+      var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/l_Watermark_image_2.0,w_0.20,o_50,c_scale,g_south_east/");
     }
     return watermarkedUrl;
   }
 
-  
+  addVideoWatermark(imageUrl: string) {
+    var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/w_0.15,l_Watermark_image_2.0,o_50,c_scale,g_south_east/");
+    return watermarkedUrl;
+  }
 }
