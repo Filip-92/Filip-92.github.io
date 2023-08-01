@@ -1,7 +1,7 @@
 <div id="card" class="mt-3">
     <h4 class="mb-3">{{newDate}}</h4>
     <div class="row">
-        <div class="col-2 mt-3 text-right" style="color: white">
+        <div class="col-2 mt-3 text-center rotate" style="color: white">
             <p id="day">{{convertDayToPL(day)}}</p>
         </div>
         <div class="col-4">
@@ -22,7 +22,7 @@
 
 </div>
 
-<p id="details" *ngIf="!moreDetails" class="mt-3" (click)="toggleDetails()">Więcej szczegółów</p>
+<p id="details" *ngIf="!moreDetails" (click)="toggleDetails()">Więcej szczegółów</p>
 
 <div *ngIf="moreDetails && innerWidth >= 900">
     <div *ngFor='let number of range' class="mt-4 mb-5" style="display: inline-block; color: white;">

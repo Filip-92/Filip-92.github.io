@@ -33,6 +33,12 @@ export class ApiService {
     );
   }
 
+  getLongTermForecast(lat: any, long: any, days: number) {
+    return this.http.get(
+      'https://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + long + '&cnt=' + days + '&units=' + this.units + '&lang=' + this.lang + '&appid=' + this.secretKey
+    );
+  }
+
   getPrecipitation(lat: any, long: any) {
     return this.http.get(
       'https://tile.openweathermap.org/map/precipitation/5/' + lat + '/' + long +'.png?appid=' + this.secretKey

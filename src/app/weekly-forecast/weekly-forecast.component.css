@@ -90,6 +90,10 @@
     font-size: 10px;
   }
 
+  .rotate {
+    transform: rotate(-90deg);
+  }
+
   @media screen and (max-width: 1000px) {
 
     #icons {
@@ -103,6 +107,12 @@
 
     #day {
         font-size: 9px;
+        margin-top: 10px;
+    }
+
+    #details {
+      margin-top: -10px !important;
+      margin-bottom: -10px !important;
     }
 
     /* #card {

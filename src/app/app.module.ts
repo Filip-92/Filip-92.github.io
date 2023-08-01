@@ -18,6 +18,7 @@ import { ScrollableDirective } from './scrollable.directive';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LongTermForecastComponent } from './long-term-forecast/long-term-forecast.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     WeeklyForecastComponent,
     ScrollableDirective,
     SafePipe,
-    SpinnerComponent
+    SpinnerComponent,
+    LongTermForecastComponent
   ],
   imports: [
     BrowserModule,

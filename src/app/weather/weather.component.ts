@@ -24,6 +24,7 @@ export class WeatherComponent implements OnInit {
   protected weatherSearchForm: FormGroup;
   protected weatherData: any;
   protected weatherDataForecast: any;
+  protected weatherDataLongTermForecast: any;
   protected precipitation: any;
   protected meme: any;
   protected coordinates: any;
@@ -41,18 +42,17 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.checkCoordinates();
+    // this.checkCoordinates();
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
-
-    console.log(this.coordinates?.features[0]?.properties?.city)
 
     this.locationService.getPosition().then(pos=>
       {
          if (pos.lng !== undefined && pos.lat !== undefined) {
           this.sendToOpenWeather(pos.lat, pos.lng);
           this.sendToOpenWeatherForecast(pos.lat, pos.lng);
+          this.sendToOpenWeatherLongTermForecast(pos.lat, pos.lng, 16);
           this.showTime();
          } else {
           this.checkCoordinates();
@@ -80,14 +80,14 @@ export class WeatherComponent implements OnInit {
     .getCoords(this.weatherSearchForm.value.location)
     .subscribe(response => {
       this.coordinates = response;
-      console.log(this.coordinates)
       this.latitude = this.coordinates?.features[0]?.geometry?.coordinates[1]
       this.longitude = this.coordinates?.features[0]?.geometry?.coordinates[0]
       // this.latitude = this.coordinates.results[0].bbox.lon1
       // this.longitude = this.coordinates.results[0].bbox.lat1
       this.sendToOpenWeather(this.latitude, this.longitude);
       this.sendToOpenWeatherForecast(this.latitude, this.longitude);
-      this.checkPrecipitationMap(30, 20);
+      this.sendToOpenWeatherLongTermForecast(this.latitude, this.longitude, 16);
+      //this.checkPrecipitationMap(30, 20);
       this.showTime()
     });
   }
@@ -105,6 +105,15 @@ export class WeatherComponent implements OnInit {
     .getForecast(latitude, longitude)
     .subscribe(response => {
       this.weatherDataForecast = response;
+    });
+  }
+
+  sendToOpenWeatherLongTermForecast(latitude: any, longitude: any, days: number) {
+    this.apiService
+    .getLongTermForecast(latitude, longitude, days)
+    .subscribe(response => {
+      this.weatherDataLongTermForecast = response;
+      console.log(this.weatherDataLongTermForecast);
     });
   }
 
