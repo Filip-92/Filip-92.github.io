@@ -48,7 +48,10 @@
         </form>
         </div>
     </div>
-    <img src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=52.2413&lon=21.0718&zoom=7" alt="">
+    <!-- <img src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=52.2413&lon=21.0718&zoom=7" alt=""> -->
+    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '01d'">
+        <img src="/assets/sunny-day-no-clouds.gif" alt="">
+    </div>
     <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '02d'">
         <img src="/assets/sunny-day.gif" alt="">
     </div>
