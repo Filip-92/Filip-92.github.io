@@ -83,11 +83,11 @@ export class WeeklyForecastComponent {
           pressure.push(this.weatherDataForecast.list[i]?.main?.pressure)
           var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
           this.nextDay.push(date)
-          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '14:00') {
+          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '13:00') {
             icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
           }
-          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '23:00') {
+          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '22:00') {
             icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
           }
         }
