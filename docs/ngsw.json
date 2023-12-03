@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1699204221308,
+  "timestamp": 1701627691531,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.37e93894fe7eb335.js",
+        "/main.dc39872f5498c0c9.js",
         "/manifest.webmanifest",
         "/polyfills.730403bf8432ed43.js",
         "/runtime.e2b1caa6e3fb3fb2.js",
@@ -30,6 +30,7 @@
       },
       "urls": [
         "/assets/background-image_adobe_express.svg",
+        "/assets/clouds-night.gif",
         "/assets/cloudy.gif",
         "/assets/favicon_io/android-chrome-192x192.png",
         "/assets/favicon_io/android-chrome-512x512.png",
@@ -48,6 +49,8 @@
         "/assets/pexels-pixabay-209831.jpg",
         "/assets/rain.gif",
         "/assets/refresh.png",
+        "/assets/snowing-day.gif",
+        "/assets/snowing-night.gif",
         "/assets/sunny-day-no-clouds.gif",
         "/assets/sunny-day.gif"
       ],
@@ -57,6 +60,7 @@
   "dataGroups": [],
   "hashTable": {
     "/assets/background-image_adobe_express.svg": "224dca1e94b40c1f27cf42a20c1b586bdd6e3782",
+    "/assets/clouds-night.gif": "7aa94da7a0d64e67f9f9e6f8fc92f199f0640ebb",
     "/assets/cloudy.gif": "4cb789b1ba3c3850a4ca8411a9b5c1e2cf48cd6e",
     "/assets/favicon_io/android-chrome-192x192.png": "aa8c2dab821de5f29914c13a4e2fde2fe54bcd29",
     "/assets/favicon_io/android-chrome-512x512.png": "42b96bcf2c7d81a8f1687ad7f60e29895e908993",
@@ -75,11 +79,13 @@
     "/assets/pexels-pixabay-209831.jpg": "c0d9028da481dd6b7cd7138652f6a71d6d5d0237",
     "/assets/rain.gif": "c151c1031a29ae8e7ffa411f4dcecc68f66764a6",
     "/assets/refresh.png": "fbcae70196adcc474720c380743ba6fb0be047fa",
+    "/assets/snowing-day.gif": "a0bc498e23a77254d7d836a5c180671800d21d70",
+    "/assets/snowing-night.gif": "1b53b0956775cf17f41c9ca023289c0688b75605",
     "/assets/sunny-day-no-clouds.gif": "c6a75c9b415219fe28563c77f537bbab3ca83a49",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "bdb096a9ae30825a1eb441b26c82829ae90c0e80",
-    "/main.37e93894fe7eb335.js": "41f0b071e95213724f8b09f4eca3852b0de93b93",
+    "/index.html": "4ec4138b035fd4bd951fd20c749500ec9e399376",
+    "/main.dc39872f5498c0c9.js": "fe06aaa99326340568942a145f482fdec21238f1",
     "/manifest.webmanifest": "befdfaff15587e60ece4ef5a652d5ea07fc74183",
     "/polyfills.730403bf8432ed43.js": "65d89837973c7eb3b45d2ea2c8469e5b2cae8b91",
     "/runtime.e2b1caa6e3fb3fb2.js": "47cddf2e52623b643d269950aac2959b94350029",

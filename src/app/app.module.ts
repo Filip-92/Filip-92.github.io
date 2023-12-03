@@ -19,6 +19,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LongTermForecastComponent } from './long-term-forecast/long-term-forecast.component';
+import { IconsComponent } from './icons/icons.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LongTermForecastComponent } from './long-term-forecast/long-term-foreca
     ScrollableDirective,
     SafePipe,
     SpinnerComponent,
-    LongTermForecastComponent
+    LongTermForecastComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,

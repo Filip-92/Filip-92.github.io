@@ -49,18 +49,7 @@
         </div>
     </div>
     <!-- <img src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=52.2413&lon=21.0718&zoom=7" alt=""> -->
-    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '01d'">
-        <img src="/assets/sunny-day-no-clouds.gif" alt="">
-    </div>
-    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '02d'">
-        <img src="/assets/sunny-day.gif" alt="">
-    </div>
-    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '04d' || weatherData?.weather[0]?.icon === '03d'">
-        <img src="/assets/cloudy.gif" alt="">
-    </div>
-    <div id="gif" *ngIf="weatherData?.weather[0]?.icon === '10d'">
-        <img src="/assets/rain.gif" alt="">
-    </div>
+    <app-icons [weatherDataIcon]="weatherData?.weather[0]?.icon"></app-icons>
     <h3 class="text-center mt-3 mb-4">
         Godzinowo
     </h3>

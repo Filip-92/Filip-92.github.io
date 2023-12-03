@@ -1,0 +1,21 @@
+<div id="gif" *ngIf="weatherDataIcon === '01d'">
+    <img src="/assets/sunny-day-no-clouds.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '02d'">
+    <img src="/assets/sunny-day.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '04d' || weatherDataIcon === '03d'">
+    <img src="/assets/cloudy.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '04n' || weatherDataIcon === '03n'">
+    <img src="/assets/clouds-night.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '10d'">
+    <img src="/assets/rain.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '13d'">
+    <img src="/assets/snowing-day.gif" alt="">
+</div>
+<div id="gif" *ngIf="weatherDataIcon === '13n'">
+    <img src="/assets/snowing-night.gif" alt="">
+</div>
