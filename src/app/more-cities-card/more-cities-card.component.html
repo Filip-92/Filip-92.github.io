@@ -1,5 +1,5 @@
 <div class="row" *ngIf="!deleted">
-    <div class="col-2 ml-2 mt-3">
+    <div class="col-3 col-lg-2 ml-2 mt-3">
         <p id="city">{{city}}</p>
     </div>
     <div class="col-2">
@@ -8,7 +8,7 @@
     <div id="temp" class="col-2 mt-3">
         <p>{{weatherData?.main?.temp | number:'1.0-0'}}°C</p>
     </div>
-    <div id="desc" class="col-lg-4 col-3 mt-3">
+    <div id="desc" class="col-4 col-lg-4 col-3 mt-3">
         <p>{{weatherData?.weather[0].description}}</p>
     </div>
     <div class="col-1 mt-3">

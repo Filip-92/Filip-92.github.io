@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -25,12 +25,19 @@ export class WeatherCitiesComponent {
 
   protected limit: boolean;
   protected deleted: boolean;
+  protected innerWidth: any;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
 
   constructor(private cookieService: CookieService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
     this.initializeForm();
+    this.innerWidth = window.innerWidth;
     if (this.cookieService.get('City1')) {
       this.city1 = this.cookieService.get('City1');
     } else {
