@@ -1,0 +1,17 @@
+<div class="row" *ngIf="!deleted">
+    <div class="col-2 ml-2 mt-3">
+        <p id="city">{{city}}</p>
+    </div>
+    <div class="col-2">
+        <img id="currentIcon" [src]="getIcon(weatherData?.weather[0]?.icon)" alt="{{weatherData?.weather[0]?.description}}">
+    </div>
+    <div id="temp" class="col-2 mt-3">
+        <p>{{weatherData?.main?.temp | number:'1.0-0'}}°C</p>
+    </div>
+    <div id="desc" class="col-lg-4 col-3 mt-3">
+        <p>{{weatherData?.weather[0].description}}</p>
+    </div>
+    <div class="col-1 mt-3">
+        <i (click)="removeLocation()" class="fa fa-close"></i>
+    </div>
+</div>

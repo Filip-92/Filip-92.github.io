@@ -20,6 +20,10 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LongTermForecastComponent } from './long-term-forecast/long-term-forecast.component';
 import { IconsComponent } from './icons/icons.component';
+import { WeatherCitiesComponent } from './weather-cities/weather-cities.component';
+import { MoreCitiesCardComponent } from './more-cities-card/more-cities-card.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,16 +36,20 @@ import { IconsComponent } from './icons/icons.component';
     SafePipe,
     SpinnerComponent,
     LongTermForecastComponent,
-    IconsComponent
+    IconsComponent,
+    WeatherCitiesComponent,
+    MoreCitiesCardComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
+    ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

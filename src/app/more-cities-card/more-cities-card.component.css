@@ -1,0 +1,39 @@
+#desc {
+    font-size: 12px;
+}
+
+#city {
+    font-size: 12px;
+}
+
+#temp {
+    font-size: 12px;
+}
+
+.fa-close:hover {
+    cursor: pointer;
+    color: red;
+}
+
+@media screen and (max-width: 1000px) {
+    #city {
+        font-size: 10px;
+    }
+
+    #desc {
+        font-size: 10px;
+    }
+
+    #temp {
+        font-size: 10px;
+    }
+
+    .col-2 {
+        margin-right: 0px !important;
+    }
+
+    .col-3 {
+        margin-left: 0px !important;
+    }
+}
+

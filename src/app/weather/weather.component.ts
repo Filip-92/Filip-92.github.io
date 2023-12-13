@@ -5,6 +5,7 @@ import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocationService } from '../_services/location.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -35,8 +36,10 @@ export class WeatherComponent implements OnInit {
   protected UTC: number = 2;
   protected sign: any;
   protected trustedUrl: string;
+  protected moreCities: boolean;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private locationService: LocationService) {
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private locationService: LocationService,
+    private cookieService: CookieService) {
     
   }
 
@@ -46,7 +49,7 @@ export class WeatherComponent implements OnInit {
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
-
+    
     this.locationService.getPosition().then(pos=>
       {
          if (pos.lng !== undefined && pos.lat !== undefined) {
@@ -59,7 +62,7 @@ export class WeatherComponent implements OnInit {
          }
       });
   }
-
+  
   initializeForm() {
     this.weatherSearchForm = this.formBuilder.group({
       location: [""]
@@ -165,7 +168,7 @@ export class WeatherComponent implements OnInit {
   }
 
   checkIfScrolled() {
-    if (window.scrollY > 200) {
+    if (window.scrollY > 120) {
       return true;
     } else {
       return false;
@@ -192,5 +195,9 @@ export class WeatherComponent implements OnInit {
   addVideoWatermark(imageUrl: string) {
     var watermarkedUrl = imageUrl?.replace("/upload/", "/upload/w_0.15,l_Watermark_image_2.0,o_50,c_scale,g_south_east/");
     return watermarkedUrl;
+  }
+
+  moreCitiesToggle() {
+    this.moreCities = !this.moreCities;
   }
 }
