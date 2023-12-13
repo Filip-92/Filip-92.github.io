@@ -2,16 +2,20 @@
     <form
     [formGroup]="weatherSearchForm"
     (ngSubmit)="addNewCity()"
-    class="col-5"
+    class="col-8 col-lg-5"
     style="margin-top: auto; margin-bottom: auto;">
         <p>Wpisz nazwę miasta, które chcesz dodać do listy</p>
-        <button type="submit" class="btn btn-small">
+        <button type="submit" class="btn btn-small" [disabled]="!weatherSearchForm?.valid">
             <i class="fa fa-plus mb-1"></i>
         </button>
         <input type="text" class="mt-2" id="addCityInput" formControlName="location" placeholder="Wpisz miasto">
         <p id="error" *ngIf="limit">Wykorzystano limit lokalizacji. Jeśli chcesz dodać nową lokalizację, usuń którąś z obecnych</p>
+        <div class="text-left" *ngIf="weatherSearchForm?.touched && !weatherSearchForm?.valid">
+            <p id="formError" *ngIf="validateControl('location') && hasError('location', 'required')">Należy wpisać nazwę miasta</p>
+            <p id="formError" *ngIf="validateControl('location') && hasError('location', 'pattern')">Dozwolone tylko litery</p>
+        </div>
     </form>
-    <div class="col-6">
+    <div class="col-10 col-lg-6" *ngIf="!deleted">
         <span *ngIf="city1 !== undefined && city1 !== null">
             <app-more-cities-card [city]="city1" [cookie]="'City1'" class="card"></app-more-cities-card>
         </span>
@@ -26,6 +30,9 @@
         </span>
         <span *ngIf="city5 !== undefined && city5 !== null">
             <app-more-cities-card [city]="city5" [cookie]="'City5'" class="card"></app-more-cities-card>
+        </span>
+        <span class="text-center" *ngIf="city1 === null">
+            <p class="mt-3">Dodaj lokalizację aby wyświetlała się na podręcznej liście</p>
         </span>
     </div>
     <div *ngIf="city1 !== undefined && city1 !== null" class="col-1" style="margin-top: auto; margin-bottom: auto;">

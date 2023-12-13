@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -24,8 +24,9 @@ export class WeatherCitiesComponent {
   protected cookie: string;
 
   protected limit: boolean;
+  protected deleted: boolean;
 
-  constructor(private formBuilder: FormBuilder, private cookieService: CookieService, private toastr: ToastrService) {
+  constructor(private cookieService: CookieService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -58,8 +59,8 @@ export class WeatherCitiesComponent {
   }
 
   initializeForm() {
-    this.weatherSearchForm = this.formBuilder.group({
-      location: [""]
+    this.weatherSearchForm = new FormGroup({
+      location: new FormControl("", [Validators.required, Validators.pattern('[a-zA-ZąęćńłóśźżĄĘĆŃŁÓŚŹŻ][a-zA-ZąęćńłóśźżĄĘĆŃŁÓŚŹŻ ]+')])
     });
   };
 
@@ -82,9 +83,19 @@ export class WeatherCitiesComponent {
     } else {
       this.limit = true;
     }
+    this.deleted = false;
   }
 
   removeAllLocations() {
     this.cookieService.deleteAll();
+    this.deleted = true;
   }; 
+
+  public validateControl = (controlName: string) => {
+    return this.weatherSearchForm.controls[controlName].invalid && this.weatherSearchForm.controls[controlName].touched
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.weatherSearchForm.controls[controlName].hasError(errorName)
+  }
 }

@@ -41,17 +41,21 @@
                     <input 
                         class="form-control" 
                         type="text"
-                        id="weatherLocation"
-                        aria-describedby="weatherLocation"
+                        id="location"
+                        aria-describedby="location"
                         placeholder="Wpisz miasto"
                         formControlName="location"
                         >
                 </div>
                 <div id="buttons" class="text-left col-4 col-md-3 col-md-3">
-                    <button type="submit" class="btn btn-success btn-small mb-3">
+                    <button type="submit" class="btn btn-success btn-small mb-3" [disabled]="!weatherSearchForm?.valid">
                         Szukaj<i class="fa fa-search ml-2"></i>
                     </button>
                 </div>
+            </div>
+            <div class="text-left" *ngIf="weatherSearchForm?.touched && !weatherSearchForm?.valid">
+                <p id="error" *ngIf="validateControl('location') && hasError('location', 'required')">Należy wpisać nazwę miasta</p>
+                <p id="error" *ngIf="validateControl('location') && hasError('location', 'pattern')">Dozwolone tylko litery</p>
             </div>
         </form>
         </div>

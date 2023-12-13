@@ -92,3 +92,7 @@ img {
     cursor: pointer;
     color: red;
 }
+
+#formError {
+    color: rgb(180, 0, 0);
+}

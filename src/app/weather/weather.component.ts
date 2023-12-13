@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../_services/api.service';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
@@ -38,7 +38,7 @@ export class WeatherComponent implements OnInit {
   protected trustedUrl: string;
   protected moreCities: boolean;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private locationService: LocationService,
+  constructor(private apiService: ApiService, private locationService: LocationService,
     private cookieService: CookieService) {
     
   }
@@ -64,8 +64,8 @@ export class WeatherComponent implements OnInit {
   }
   
   initializeForm() {
-    this.weatherSearchForm = this.formBuilder.group({
-      location: [""]
+    this.weatherSearchForm = new FormGroup({
+      location: new FormControl("", [Validators.required, Validators.pattern('[a-zA-ZąęćńłóśźżĄĘĆŃŁÓŚŹŻ][a-zA-ZąęćńłóśźżĄĘĆŃŁÓŚŹŻ ]+')])
     });
   };
 
@@ -199,5 +199,13 @@ export class WeatherComponent implements OnInit {
 
   moreCitiesToggle() {
     this.moreCities = !this.moreCities;
+  }
+
+  public validateControl = (controlName: string) => {
+    return this.weatherSearchForm.controls[controlName].invalid && this.weatherSearchForm.controls[controlName].touched
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.weatherSearchForm.controls[controlName].hasError(errorName)
   }
 }
