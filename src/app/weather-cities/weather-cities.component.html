@@ -1,4 +1,4 @@
-<div class="row" style="margin-left: 10px; margin-right: 10px;">
+<div class="row" style="margin-left: auto; margin-right: auto;">
     <form
     [formGroup]="weatherSearchForm"
     (ngSubmit)="addNewCity()"
@@ -15,7 +15,7 @@
             <p id="formError" *ngIf="validateControl('location') && hasError('location', 'pattern')">Dozwolone tylko litery</p>
         </div>
     </form>
-    <div class="col-11 col-lg-6" *ngIf="!deleted">
+    <div class="col-12 col-lg-6" *ngIf="!deleted">
         <span *ngIf="city1 !== undefined && city1 !== null">
             <app-more-cities-card [city]="city1" [cookie]="'City1'" class="card"></app-more-cities-card>
         </span>
