@@ -73,24 +73,28 @@ export class WeatherCitiesComponent {
 
   addNewCity() {
     if (!this.cookieService.get('City1')) {
-      this.cookieService.set('City1', this.weatherSearchForm?.value?.location);
+      this.setCookie('City1')
       this.city1 = this.cookieService.get('City1');
     } else if (this.cookieService.get('City1') && !this.cookieService.get('City2')) {
-      this.cookieService.set('City2', this.weatherSearchForm?.value?.location);
+      this.setCookie('City2')
       this.city2 = this.cookieService.get('City2');
     } else if (this.cookieService.get('City1') && this.cookieService.get('City2') && !this.cookieService.get('City3')) {
-      this.cookieService.set('City3', this.weatherSearchForm?.value?.location);
+      this.setCookie('City3')
       this.city3 = this.cookieService.get('City3');
     } else if (this.cookieService.get('City1') && this.cookieService.get('City2') && this.cookieService.get('City3') && !this.cookieService.get('City4')) {
-      this.cookieService.set('City4', this.weatherSearchForm?.value?.location);
+      this.setCookie('City4')
       this.city4 = this.cookieService.get('City4');
     } else if (this.cookieService.get('City1') && this.cookieService.get('City2') && this.cookieService.get('City3') && this.cookieService.get('City4') && !this.cookieService.get('City5')) {
-      this.cookieService.set('City5', this.weatherSearchForm?.value?.location);
+      this.setCookie('City5')
       this.city5 = this.cookieService.get('City5');
     } else {
       this.limit = true;
     }
     this.deleted = false;
+  }
+
+  setCookie(city: string) {
+    this.cookieService.set(city, this.weatherSearchForm?.value?.location, 10);
   }
 
   removeAllLocations() {
