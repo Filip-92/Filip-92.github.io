@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1702577876487,
+  "timestamp": 1712222467706,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.f8383c67685bc8ca.js",
+        "/main.3015ce9508a17869.js",
         "/manifest.webmanifest",
         "/polyfills.0030c07aeb09ea9a.js",
         "/runtime.e2b1caa6e3fb3fb2.js",
-        "/styles.8a5a7c893f497d44.css"
+        "/styles.78143bcc5150142e.css"
       ],
       "patterns": []
     },
@@ -46,13 +46,16 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/nature_landscape_mountains_clouds_mist_cliff_vertical_Greenland-96346.jpg",
+        "/assets/pexels-cottonbro-studio-3942924.jpg",
         "/assets/pexels-pixabay-209831.jpg",
         "/assets/rain.gif",
         "/assets/refresh.png",
         "/assets/snowing-day.gif",
         "/assets/snowing-night.gif",
         "/assets/sunny-day-no-clouds.gif",
-        "/assets/sunny-day.gif"
+        "/assets/sunny-day.gif",
+        "/assets/thunderstorm-and-lightning.webp"
       ],
       "patterns": []
     }
@@ -76,6 +79,8 @@
     "/assets/icons/icon-512x512.png": "42b96bcf2c7d81a8f1687ad7f60e29895e908993",
     "/assets/icons/icon-72x72.png": "1c20446528f162a31e991ab1e6256a59c48063ce",
     "/assets/icons/icon-96x96.png": "08dc40173c1d697d170232186793c67f1983a06f",
+    "/assets/nature_landscape_mountains_clouds_mist_cliff_vertical_Greenland-96346.jpg": "475caa019eb9c2bc2e0b3841cc50200a5fbbf5d1",
+    "/assets/pexels-cottonbro-studio-3942924.jpg": "354b09ecfac5e2a46552fe2431f8ab665655ebad",
     "/assets/pexels-pixabay-209831.jpg": "c0d9028da481dd6b7cd7138652f6a71d6d5d0237",
     "/assets/rain.gif": "c151c1031a29ae8e7ffa411f4dcecc68f66764a6",
     "/assets/refresh.png": "fbcae70196adcc474720c380743ba6fb0be047fa",
@@ -83,13 +88,14 @@
     "/assets/snowing-night.gif": "1b53b0956775cf17f41c9ca023289c0688b75605",
     "/assets/sunny-day-no-clouds.gif": "c6a75c9b415219fe28563c77f537bbab3ca83a49",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
+    "/assets/thunderstorm-and-lightning.webp": "279d7328abf3fb4543a8325f0e838d3df6e59d07",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "f7541cffd1daaf8e27ca31be505e690538f6da27",
-    "/main.f8383c67685bc8ca.js": "6c8946aa61ab3910850841d4bb24a477fa1f745b",
+    "/index.html": "e9d9305fd97b1472ecf645b8f04ff69b426bac68",
+    "/main.3015ce9508a17869.js": "600fbb3eac335afd0265b0c783fa24f3137a9304",
     "/manifest.webmanifest": "befdfaff15587e60ece4ef5a652d5ea07fc74183",
     "/polyfills.0030c07aeb09ea9a.js": "bdedbe3dacaf9009f06c4a7360dbbe7dbd290860",
     "/runtime.e2b1caa6e3fb3fb2.js": "47cddf2e52623b643d269950aac2959b94350029",
-    "/styles.8a5a7c893f497d44.css": "b3cd4e4abb6f0d71a678fc4b8315dc5491d16b12"
+    "/styles.78143bcc5150142e.css": "55ccd0a9ea5b984b309f207bf6e694ce3b1f0e49"
   },
   "navigationUrls": [
     {
