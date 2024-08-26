@@ -3,7 +3,7 @@
 }
 
 .card {
-    background-color: rgb(156, 156, 156) !important;
+    background: url('/assets/pexels-cottonbro-studio-3942924.jpg');
     padding-top: 10px;
     padding-bottom: 20px;
 }

@@ -35,7 +35,7 @@ export class ApiService {
 
   getLongTermForecast(lat: any, long: any, days: number) {
     return this.http.get(
-      'https://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + long + '&cnt=' + days + '&units=' + this.units + '&lang=' + this.lang + '&appid=' + this.secretKey
+      'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + long + '&units=' + this.units + '&lang=' + this.lang + '&appid=' + this.secretKey
     );
   }
 

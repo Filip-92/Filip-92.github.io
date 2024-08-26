@@ -116,7 +116,6 @@ export class WeatherComponent implements OnInit {
     .getLongTermForecast(latitude, longitude, days)
     .subscribe(response => {
       this.weatherDataLongTermForecast = response;
-      console.log(this.weatherDataLongTermForecast);
     });
   }
 
@@ -125,7 +124,6 @@ export class WeatherComponent implements OnInit {
     .getPrecipitation(latitude, longitude)
     .subscribe(response => {
       this.precipitation = response;
-      console.log(this.precipitation)
     });
   }
 

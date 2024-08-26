@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1724675349126,
+  "timestamp": 1724678970601,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.84b4e88b8b8ade1f.js",
+        "/main.559442603c07620f.js",
         "/manifest.webmanifest",
         "/polyfills.0030c07aeb09ea9a.js",
         "/runtime.e2b1caa6e3fb3fb2.js",
@@ -46,6 +46,7 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/pexels-cottonbro-studio-3942924.jpg",
         "/assets/pexels-pixabay-209831.jpg",
         "/assets/rain.gif",
         "/assets/refresh.png",
@@ -76,6 +77,7 @@
     "/assets/icons/icon-512x512.png": "42b96bcf2c7d81a8f1687ad7f60e29895e908993",
     "/assets/icons/icon-72x72.png": "1c20446528f162a31e991ab1e6256a59c48063ce",
     "/assets/icons/icon-96x96.png": "08dc40173c1d697d170232186793c67f1983a06f",
+    "/assets/pexels-cottonbro-studio-3942924.jpg": "354b09ecfac5e2a46552fe2431f8ab665655ebad",
     "/assets/pexels-pixabay-209831.jpg": "c0d9028da481dd6b7cd7138652f6a71d6d5d0237",
     "/assets/rain.gif": "c151c1031a29ae8e7ffa411f4dcecc68f66764a6",
     "/assets/refresh.png": "fbcae70196adcc474720c380743ba6fb0be047fa",
@@ -84,8 +86,8 @@
     "/assets/sunny-day-no-clouds.gif": "c6a75c9b415219fe28563c77f537bbab3ca83a49",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "4fc490b4c6302f7e56a830c7a86967002d824ac4",
-    "/main.84b4e88b8b8ade1f.js": "99e65ac60691b75688143c386a83b83678885b2b",
+    "/index.html": "8ea310dcf96fcf8f627b7c6f53698a4bd53d61ee",
+    "/main.559442603c07620f.js": "2845ee4f8e45f5d046a8abb8ba0fc3d6c8f1ae9f",
     "/manifest.webmanifest": "37211994346c30a64b71cebbc1a07189aa476978",
     "/polyfills.0030c07aeb09ea9a.js": "bdedbe3dacaf9009f06c4a7360dbbe7dbd290860",
     "/runtime.e2b1caa6e3fb3fb2.js": "47cddf2e52623b643d269950aac2959b94350029",
