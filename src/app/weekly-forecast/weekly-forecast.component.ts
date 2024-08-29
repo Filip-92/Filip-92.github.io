@@ -1,5 +1,5 @@
 import { Component, HostListener, Input } from '@angular/core';
-import {formatDate} from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
@@ -43,11 +43,15 @@ export class WeeklyForecastComponent {
       this.innerWidth = window.innerWidth;
     }
 
+    constructor(private datePipe: DatePipe) {
+
+    }
+
     ngOnInit(): void {
       this.start = this.range[0]
       this.setDate(this.days);
       this.loopThroughData();
-      this.innerWidth = window.innerWidth;
+      this.innerWidth = window.innerWidth; 
     }
 
     setDate(days: number) {
@@ -77,19 +81,20 @@ export class WeeklyForecastComponent {
       for (let i = 0; i < 40; i++) {
         var timestamp = this.weatherDataForecast?.list[i]?.dt;
         var date: Date = new Date(timestamp * 1000);
-        var format = formatDate(this.currentDate.setDate(date.getDate()), 'dd/MM', 'en')
+        var format = this.datePipe.transform(this.currentDate, 'dd/MM', 'en')
         if (format === this.newDate) {
-          data.push(this.weatherDataForecast.list[i]?.main?.temp)
-          pressure.push(this.weatherDataForecast.list[i]?.main?.pressure)
-          var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
-          this.nextDay.push(date)
-          console.log(formatDate(time.setDate(date.getDate()), 'HH:mm', 'en'))
-          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '14:00') {
-            icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
-            descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
-          }
-          if (format === this.newDate && formatDate(time.setDate(date.getDate()), 'HH:mm', 'en') === '23:00') {
-            icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
+          if (this.datePipe.transform(this.weatherDataForecast.list[i]?.dt_txt, 'dd/MM', 'en') === this.newDate) {
+            data.push(this.weatherDataForecast.list[i]?.main?.temp)
+            pressure.push(this.weatherDataForecast.list[i]?.main?.pressure)
+            var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
+            this.nextDay.push(date)
+            if (format === this.newDate && this.datePipe.transform(time, 'HH:mm', 'en') === '14:00') {
+              icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
+              descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
+            }
+            if (format === this.newDate && this.datePipe.transform(time, 'HH:mm', 'en') === '23:00') {
+              icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
+            }
           }
         }
       }
@@ -99,9 +104,9 @@ export class WeeklyForecastComponent {
       this.maxPress(pressure)
       this.chooseIcon(icons)
       this.chooseDescription(descriptions);
-      this.day = formatDate(this.currentDate.setDate(this.nextDay[0].getDate()), 'EEEE', 'en');
+      this.day = this.datePipe.transform(this.currentDate, 'EEEE', 'en');
     }
-
+    
     minTemp(data: any) {
       var smallestNumber = data[0];
       for (let i = 0; i < data.length; i++) {

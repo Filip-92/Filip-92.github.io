@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocationService } from '../_services/location.service';
 import { CookieService } from 'ngx-cookie-service';
+import { WeatherMapComponent } from '../weather-map/weather-map.component';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -45,10 +46,16 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    // this.checkCoordinates();
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
+
+    if (this.cookieService.get('latitude')) {
+      this.latitude = this.cookieService.get('latitude');
+    }
+    if (this.cookieService.get('longitude')) {
+      this.longitude = this.cookieService.get('longitude');
+    }
     
     this.locationService.getPosition().then(pos=>
       {
@@ -78,20 +85,25 @@ export class WeatherComponent implements OnInit {
     this.UTC = Number(this.coordinates?.features[0]?.properties?.timezone?.offset_DST?.substring(1, 3));
   }
 
+  setCookie(coordinate: string) {
+    this.cookieService.set(coordinate, this.weatherSearchForm?.value?.location, 10);
+  }
+
   checkCoordinates() {
     this.apiService
     .getCoords(this.weatherSearchForm.value.location)
     .subscribe(response => {
       this.coordinates = response;
       this.latitude = this.coordinates?.features[0]?.geometry?.coordinates[1]
+      this.cookieService.set('latitude', this.latitude, 10);
       this.longitude = this.coordinates?.features[0]?.geometry?.coordinates[0]
-      // this.latitude = this.coordinates.results[0].bbox.lon1
-      // this.longitude = this.coordinates.results[0].bbox.lat1
+      this.cookieService.set('longitude', this.longitude, 10);
       this.sendToOpenWeather(this.latitude, this.longitude);
       this.sendToOpenWeatherForecast(this.latitude, this.longitude);
       this.sendToOpenWeatherLongTermForecast(this.latitude, this.longitude, 16);
-      //this.checkPrecipitationMap(30, 20);
-      this.showTime()
+      this.showTime();
+      this.latitude = this.cookieService.get('latitude');
+      this.longitude = this.cookieService.get('longitude');
     });
   }
 

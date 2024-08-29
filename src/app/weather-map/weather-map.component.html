@@ -1,0 +1,28 @@
+<div class="mt-5">
+    <div class="map" #map id="map" style="width: 100%; height: 532.2px;"></div>
+</div>
+
+<div class="card mt-2">
+    <div class="row text-center">
+        <div class="col-2">
+            <input type="radio" id="clouds_new" name="weather" value="clouds_new" checked (change)="onChange($event)">
+            <label for="clouds_new" class="ml-2">Chmury</label><br>
+        </div>
+        <div class="col-2">
+            <input type="radio" id="precipitation_new" name="weather" value="precipitation_new" (change)="onChange($event)">
+            <label for="precipitation_new" class="ml-2">Opady</label><br>
+        </div>
+        <div class="col-2">
+            <input type="radio" id="pressure_new" name="weather" value="pressure_new" (change)="onChange($event)">
+            <label for="pressure_new" class="ml-2">Ciśnienie</label>
+        </div>
+        <div class="col-2">
+            <input type="radio" id="wind_new" name="weather" value="wind_new" (change)="onChange($event)">
+            <label for="wind_new" class="ml-2">Wiatr</label>
+        </div>
+        <div class="col-2">
+            <input type="radio" id="temp_new" name="weather" value="temp_new" (change)="onChange($event)">
+            <label for="temp_new" class="ml-2">Temperatura</label>
+        </div>
+    </div>
+</div>

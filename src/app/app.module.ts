@@ -1,6 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SafePipe, WeatherComponent } from './weather/weather.component';
@@ -24,6 +24,8 @@ import { WeatherCitiesComponent } from './weather-cities/weather-cities.componen
 import { MoreCitiesCardComponent } from './more-cities-card/more-cities-card.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WeatherMapComponent } from './weather-map/weather-map.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LongTermForecastComponent,
     IconsComponent,
     WeatherCitiesComponent,
-    MoreCitiesCardComponent
+    MoreCitiesCardComponent,
+    WeatherMapComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ApiService,
     {
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

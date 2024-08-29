@@ -8,6 +8,10 @@
     padding-bottom: 20px;
 }
 
+#mainCard {
+    background-color: #1b395b !important; 
+}
+
 img {
     width: 100%;
 }
@@ -184,4 +188,8 @@ input::placeholder {
 
 #error {
     color: rgb(180, 0, 0);
+    background-color: black;
+    border: 1px solid red;
+    padding: 2px;
+    text-align: center;
 }

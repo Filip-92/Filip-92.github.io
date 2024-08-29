@@ -7,7 +7,7 @@
         <app-weather-cities></app-weather-cities>
     </div>
 
-    <div class="card mt-3 mb-3">
+    <div class="card mt-3 mb-3" id="mainCard">
         <!-- <span class="text-right mr-3">Więcej miast</span>  -->
         <div class="text-center" id="current">
             <div class="more-cities" (click)="moreCitiesToggle()">Więcej miast</div>
@@ -22,7 +22,7 @@
                         </span>
                     </h3>
                 </div>
-                <div class="col-6 col-md-4 text-center">
+                <div class="col-6 col-md-6 text-center">
                     <h3>
                         {{weatherData?.name}}
                     </h3>
@@ -53,6 +53,9 @@
                     </button>
                 </div>
             </div>
+            <p *ngIf="longitude !== undefined && latitude !== undefined">
+                Długość: {{longitude | number:'1.0-3'}}  |  Szerokość: {{latitude | number:'1.0-3'}}
+            </p>
             <div class="text-left" *ngIf="weatherSearchForm?.touched && !weatherSearchForm?.valid">
                 <p id="error" *ngIf="validateControl('location') && hasError('location', 'required')">Należy wpisać nazwę miasta</p>
                 <p id="error" *ngIf="validateControl('location') && hasError('location', 'pattern')">Dozwolone tylko litery</p>
@@ -70,6 +73,11 @@
     <div id="hourly" class="card mt-3">
         <app-hourly-weather [weatherDataForecast]="weatherDataForecast"></app-hourly-weather>
     </div>
+
+    <div *ngIf="latitude !== undefined && longitude !== undefined">
+        <app-weather-map [latitude]="latitude" [longitude]="longitude"></app-weather-map>
+    </div>
+
     <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-3">
         <h3 class="mt-3 mb-4">Prognoza</h3>
         <div class="card">
