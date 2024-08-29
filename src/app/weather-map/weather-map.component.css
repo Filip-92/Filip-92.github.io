@@ -2,3 +2,13 @@
     background-color: gray;
     color: white;
 }
+
+@media screen and (max-width: 1200px) {
+    #map {
+        height: 200px !important;
+    }
+
+    .card {
+        font-size: 12px;
+    }
+}

@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1724957305177,
+  "timestamp": 1724957935293,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.a566b4aeb2104782.js",
+        "/main.9e1b4f39ad54cfaa.js",
         "/manifest.webmanifest",
         "/polyfills.0030c07aeb09ea9a.js",
         "/runtime.59879f79e5cd0d60.js",
@@ -86,8 +86,8 @@
     "/assets/sunny-day-no-clouds.gif": "c6a75c9b415219fe28563c77f537bbab3ca83a49",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "879ca1b8c239d68cc09dd580225ca97a27454295",
-    "/main.a566b4aeb2104782.js": "134536025f10fd972c11230f0d1339d87cc0b58a",
+    "/index.html": "4cd8e14720f5f7b65423478ad33fe9b0179d1c33",
+    "/main.9e1b4f39ad54cfaa.js": "4ccecb4ee7dfcb6d96180caaef4498791231c6e6",
     "/manifest.webmanifest": "37211994346c30a64b71cebbc1a07189aa476978",
     "/polyfills.0030c07aeb09ea9a.js": "bdedbe3dacaf9009f06c4a7360dbbe7dbd290860",
     "/runtime.59879f79e5cd0d60.js": "f9010ceb1d20c78bbad226d8bc2825df5d81df32",
