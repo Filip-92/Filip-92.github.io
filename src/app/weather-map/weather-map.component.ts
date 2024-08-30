@@ -13,10 +13,10 @@ export class WeatherMapComponent {
   @Input() longitude: any;
   APIkey: any = '';
 
-  name = 'Angular';
-  map:any;
+  protected map: any;
+  protected weatherMap: any;
 
-  protected layer: any = 'precipitation_new';
+  protected layer: any = 'clouds';
   private secretKey: string = environment.secretKey;
   private geoSecretKey: string = environment.geoSecretKey;
 
@@ -44,7 +44,7 @@ export class WeatherMapComponent {
 
   changeLocation(latitude: any, longitude: any) {
     console.log(this.layer)
-    this.map = L.map('map').setView([latitude, longitude], 8);
+    this.map = L.map('map').setView([latitude, longitude], 6);
     L.tileLayer('https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=' + this.geoSecretKey, {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
@@ -52,13 +52,11 @@ export class WeatherMapComponent {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
     // Makerを配置
-    L.marker([0, 0]).bindPopup('<b>Hello!!</b>').addTo(this.map);
+    L.marker([latitude, longitude]).bindPopup('<b>You are here!!</b>').addTo(this.map);
   }
 
   ngOnChanges() {
-    console.log(this.latitude);
-    console.log(this.longitude);
-    this.map.remove();
+    this.map?.remove();
     this.changeLocation(this.latitude, this.longitude);
   }
 }

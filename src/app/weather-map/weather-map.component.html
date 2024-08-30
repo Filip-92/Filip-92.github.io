@@ -5,24 +5,136 @@
 <div class="card mt-2">
     <div class="row text-center">
         <div class="col-2">
-            <input type="radio" id="clouds_new" name="weather" value="clouds_new" checked (change)="onChange($event)">
-            <label for="clouds_new" class="ml-2">Chmury</label><br>
+            <input type="radio" id="clouds" name="weather" value="clouds" checked (change)="onChange($event)">
+            <label for="clouds" class="ml-2">Chmury</label><br>
         </div>
         <div class="col-2">
-            <input type="radio" id="precipitation_new" name="weather" value="precipitation_new" (change)="onChange($event)">
-            <label for="precipitation_new" class="ml-2">Opady</label><br>
+            <input type="radio" id="precipitation" name="weather" value="precipitation" (change)="onChange($event)">
+            <label for="precipitation" class="ml-2">Opady</label><br>
         </div>
         <div class="col-2">
-            <input type="radio" id="pressure_new" name="weather" value="pressure_new" (change)="onChange($event)">
-            <label for="pressure_new" class="ml-2">Ciśnienie</label>
+            <input type="radio" id="pressure" name="weather" value="pressure" (change)="onChange($event)">
+            <label for="pressure" class="ml-2">Ciśnienie</label>
         </div>
         <div class="col-2">
-            <input type="radio" id="wind_new" name="weather" value="wind_new" (change)="onChange($event)">
-            <label for="wind_new" class="ml-2">Wiatr</label>
+            <input type="radio" id="wind" name="weather" value="wind" (change)="onChange($event)">
+            <label for="wind" class="ml-2">Wiatr</label>
         </div>
         <div class="col-2">
-            <input type="radio" id="temp_new" name="weather" value="temp_new" (change)="onChange($event)">
-            <label for="temp_new" class="ml-2">Temperatura</label>
+            <input type="radio" id="temp" name="weather" value="temp" (change)="onChange($event)">
+            <label for="temp" class="ml-2">Temperatura</label>
         </div>
     </div>
 </div>
+
+<div *ngIf="layer === 'clouds'" class="mt-2">
+    <div class="scale-details">
+        <div>Clouds, %</div>
+        <div class="scale-gradient">
+            <div class="scale-dividers row">
+                <div>0</div>
+                <div>25</div>
+                <div>50</div>
+                <div>75</div>
+                <div>100</div>
+            </div>
+            <div class="horizontal-gradient-line" style="background-image: linear-gradient(to right, rgba(247, 247, 255, 0) 0%, rgba(251, 247, 255, 0) 10%, 
+            rgba(244, 248, 255, 0.1) 20%, rgba(240, 249, 255, 0.2) 30%, rgba(221, 250, 255, 0.4) 40%, rgba(224, 224, 224, 0.9) 50%, rgba(224, 224, 224, 0.76) 60%, 
+            rgba(228, 228, 228, 0.9) 70%, rgba(232, 232, 232, 0.9) 80%, rgb(214, 213, 213) 90%, rgb(210, 210, 210) 95%, rgb(183, 183, 183) 100%);">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="layer === 'precipitation'" class="mt-2">
+    <div class="scale-details">
+        <div>Precipitation, mm/h</div>
+        <div class="gradient-container">
+            <div class="scale-dividers row">
+                <div>0</div>
+                <div>0.5</div>
+                <div>1</div>
+                <div>2</div>
+                <div>4</div>
+                <div>6</div>
+                <div>7</div>
+                <div>10</div>
+                <div>12</div>
+                <div>14</div>
+                <div>16</div>
+                <div>24</div>
+                <div>32</div>
+                <div>60</div>
+            </div>
+            <div class="horizontal-gradient-line" style="background: linear-gradient(to left, rgb(170, 43, 195), 
+            rgb(255, 0, 146), rgb(255, 0, 100), rgb(255, 0, 0), rgb(255, 91, 0), rgb(255, 150, 0), rgb(255, 205, 0), rgb(239, 248, 0), 
+            rgb(0, 70, 0), rgb(0, 90, 0), rgb(0, 160, 0), rgb(0, 211, 0), rgb(0, 250, 100), rgba(0, 0, 0, 0));"></div>
+        </div>
+    </div>
+</div>
+
+<div>
+
+<div *ngIf="layer === 'pressure'" class="mt-2">
+    <div class="scale-details">
+        <div>Pressure, hPa</div>
+        <div class="scale-gradient">
+            <div class="scale-dividers row">
+                <div>950</div>
+                <div>980</div>
+                <div>1010</div>
+                <div>1040</div>
+                <div>1070</div>
+            </div>
+            <div class="horizontal-gradient-line" style="background-image: linear-gradient(to right, rgb(0, 115, 255) 0%, rgb(0, 170, 255) 8.35059%, 
+            rgb(75, 208, 214) 24.9192%, rgb(141, 231, 199) 41.4879%, rgb(176, 247, 32) 49.7722%, rgb(240, 184, 0) 58.0565%, rgb(251, 85, 21) 74.6251%, 
+            rgb(243, 54, 59) 91.1938%, rgb(198, 0, 0) 100%);">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="layer === 'wind'" class="mt-2">
+    <div class="scale-details">
+        <div>Wind speed, m/s</div>
+        <div class="gradient-container">
+            <div class="scale-dividers row">
+                <div>0</div>
+                <div>2</div>
+                <div>3</div>
+                <div>6</div>
+                <div>12</div>
+                <div>25</div>
+                <div>50</div>
+                <div>100</div>
+            </div>
+            <div class="horizontal-gradient-line" style="background: linear-gradient(to left, rgb(158, 128, 177), rgba(116, 76, 172, 0.9), rgb(164, 123, 170), 
+            rgba(170, 128, 177, 0.84), rgba(176, 128, 177, 0.71), rgba(170, 128, 177, 0.54), rgba(170, 128, 177, 0.44), rgba(255, 255, 0, 0));">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="layer === 'temp'" class="mt-2">
+    <div class="scale-details">
+        <div>Temperature, °C</div>
+        <div class="scale-gradient">
+            <div class="scale-dividers row">
+                <div>-40</div>
+                <div>-20</div>
+                <div>0</div>
+                <div>20</div>
+                <div>40</div>
+            </div>
+            <div class="horizontal-gradient-line" style="background-image: linear-gradient(to right, rgb(159, 85, 181) 0%, rgb(44, 106, 187) 8.75%, rgb(82, 139, 213) 12.5%, 
+            rgb(103, 163, 222) 18.75%, rgb(142, 202, 240) 25%, rgb(155, 213, 244) 31.25%, rgb(172, 225, 253) 37.5%, rgb(194, 234, 255) 43.75%, rgb(255, 255, 208) 50%, 
+            rgb(254, 248, 174) 56.25%, rgb(254, 232, 146) 62.5%, rgb(254, 226, 112) 68.75%, rgb(253, 212, 97) 75%, rgb(244, 168, 94) 82.5%, rgb(244, 129, 89) 87.5%, 
+            rgb(244, 104, 89) 93.75%, rgb(244, 76, 73) 100%);">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
