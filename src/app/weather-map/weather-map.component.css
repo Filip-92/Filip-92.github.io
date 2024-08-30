@@ -74,4 +74,19 @@
     font-size: 10px;
     float: right !important;
 }
+
+@media screen and (max-width: 1500px) {
+
+    .scale-dividers {
+        width: 240px !important;
+    }
+
+    .horizontal-gradient-line {
+        width: 220px !important;
+    }
+
+    .scale-details {
+        width: 100% !important;
+    }
+}
             
