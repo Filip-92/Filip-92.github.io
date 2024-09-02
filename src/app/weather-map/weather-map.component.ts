@@ -12,6 +12,8 @@ export class WeatherMapComponent {
   @Input() latitude: any;
   @Input() longitude: any;
   APIkey: any = '';
+  currentDate: any;
+  zoom: number;
 
   protected map: any;
   protected weatherMap: any;
@@ -31,32 +33,46 @@ export class WeatherMapComponent {
 
   onChange(e) {
     this.layer= e.target.value;
-    this.map.remove();
-    this.changeLocation(this.latitude, this.longitude);
+    //this.map?.remove();
+    this.map.on('zoom', ({ target }) => {
+      this.zoom = target.getZoom();
+    });
+    this.changeLocation(this.latitude, this.longitude, this.zoom);
  }
   ngOnInit() {
-    this.changeLocation(this.latitude, this.longitude);
+    this.zoom = 8;
+    this.changeLocation(this.latitude, this.longitude, this.zoom);
     // antPolyline = L.polyline.antPath(latlngs, options);
     // antPolyline.addTo(map);
   
     // https://github.com/rubenspgcavalcante/leaflet-ant-path
   }
 
-  changeLocation(latitude: any, longitude: any) {
-    console.log(this.layer)
-    this.map = L.map('map').setView([latitude, longitude], 6);
+  changeLocation(latitude: any, longitude: any, zoom: any) {
+    this.map?.remove();
+    this.map = L.map('map').setView([latitude, longitude], zoom);
     L.tileLayer('https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=' + this.geoSecretKey, {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
     L.tileLayer('https://tile.openweathermap.org/map/' + this.layer + '/{z}/{x}/{y}.png?appid=' + this.secretKey, {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: 'Weather from <a href="http://openweathermap.org/" alt="World Map and worldwide Weather Forecast online">OpenWeatherMap</a>'
     }).addTo(this.map);
+    this.map.on('zoom', ({ target }) => {
+      this.zoom = target.getZoom();
+    });
+    this.map.on('zoomend', ({ target }) => {
+      this.zoom = target.getZoom()
+    });
+    // L.tileLayer('https://maps.openweathermap.org/maps/2.0/radar/{z}/{x}/{y}?&appid=' + this.secretKey + '&tm=1600781400', {
+    //   attribution: 'Weather from <a href="http://openweathermap.org/" alt="World Map and worldwide Weather Forecast online">OpenWeatherMap</a>'
+    // }).addTo(this.map);
+    
     // Makerを配置
     L.marker([latitude, longitude]).bindPopup('<b>You are here!!</b>').addTo(this.map);
   }
 
   ngOnChanges() {
     this.map?.remove();
-    this.changeLocation(this.latitude, this.longitude);
+    this.changeLocation(this.latitude, this.longitude, this.zoom);
   }
 }

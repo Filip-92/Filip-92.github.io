@@ -49,13 +49,6 @@ export class WeatherComponent implements OnInit {
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
-
-    if (this.cookieService.get('latitude')) {
-      this.latitude = this.cookieService.get('latitude');
-    }
-    if (this.cookieService.get('longitude')) {
-      this.longitude = this.cookieService.get('longitude');
-    }
     
     this.locationService.getPosition().then(pos=>
       {
@@ -63,7 +56,15 @@ export class WeatherComponent implements OnInit {
           this.sendToOpenWeather(pos.lat, pos.lng);
           this.sendToOpenWeatherForecast(pos.lat, pos.lng);
           this.sendToOpenWeatherLongTermForecast(pos.lat, pos.lng, 16);
+          this.cookieService.set('latitude', pos.lat, 10);
+          this.cookieService.set('longitude', pos.lng, 10);
           this.showTime();
+          if (this.cookieService.get('latitude')) {
+            this.latitude = this.cookieService.get('latitude');
+          }
+          if (this.cookieService.get('longitude')) {
+            this.longitude = this.cookieService.get('longitude');
+          }
          } else {
           this.checkCoordinates();
          }
