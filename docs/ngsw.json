@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1727541534310,
+  "timestamp": 1727542276420,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.f4cc4e94834d5a91.js",
+        "/main.96426fe65d391be7.js",
         "/manifest.webmanifest",
         "/polyfills.0030c07aeb09ea9a.js",
         "/runtime.59879f79e5cd0d60.js",
@@ -46,6 +46,7 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/night_no_clouds.jpg",
         "/assets/pexels-cottonbro-studio-3942924.jpg",
         "/assets/pexels-pixabay-209831.jpg",
         "/assets/rain.gif",
@@ -77,6 +78,7 @@
     "/assets/icons/icon-512x512.png": "42b96bcf2c7d81a8f1687ad7f60e29895e908993",
     "/assets/icons/icon-72x72.png": "1c20446528f162a31e991ab1e6256a59c48063ce",
     "/assets/icons/icon-96x96.png": "08dc40173c1d697d170232186793c67f1983a06f",
+    "/assets/night_no_clouds.jpg": "8801510e562e392e826f00635c82f3176e76aa18",
     "/assets/pexels-cottonbro-studio-3942924.jpg": "354b09ecfac5e2a46552fe2431f8ab665655ebad",
     "/assets/pexels-pixabay-209831.jpg": "c0d9028da481dd6b7cd7138652f6a71d6d5d0237",
     "/assets/rain.gif": "c151c1031a29ae8e7ffa411f4dcecc68f66764a6",
@@ -86,8 +88,8 @@
     "/assets/sunny-day-no-clouds.gif": "c6a75c9b415219fe28563c77f537bbab3ca83a49",
     "/assets/sunny-day.gif": "42d7fa9b7f5cc8bee7cf753080321d38d19ada2e",
     "/favicon.ico": "b2c2d2a20cfa3814c661ee386764e7d3942c223f",
-    "/index.html": "619941c25881c1338a7cb3cb84f08d5a46dbb717",
-    "/main.f4cc4e94834d5a91.js": "e4f42c8313b07475f2d4ae3edee3f793a74e4c31",
+    "/index.html": "7c24586eb0061eb641e49074785ef069db05dc8b",
+    "/main.96426fe65d391be7.js": "2ef609e7ad254abdb20f94d345f2456b7b066b52",
     "/manifest.webmanifest": "37211994346c30a64b71cebbc1a07189aa476978",
     "/polyfills.0030c07aeb09ea9a.js": "bdedbe3dacaf9009f06c4a7360dbbe7dbd290860",
     "/runtime.59879f79e5cd0d60.js": "f9010ceb1d20c78bbad226d8bc2825df5d81df32",
