@@ -121,6 +121,7 @@ export class WeatherComponent implements OnInit {
     .getForecast(latitude, longitude)
     .subscribe(response => {
       this.weatherDataForecast = response;
+      console.log(this.weatherDataForecast);
     });
   }
 

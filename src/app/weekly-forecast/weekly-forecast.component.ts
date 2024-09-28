@@ -54,6 +54,11 @@ export class WeeklyForecastComponent {
       this.innerWidth = window.innerWidth; 
     }
 
+    ngOnChanges() {
+      //this.map?.remove();
+      this.loopThroughData();
+    }
+
     setDate(days: number) {
       this.newDate = formatDate(this.currentDate.setDate(this.currentDate.getDate() + days), 'dd/MM', 'en')
       return this.newDate;
