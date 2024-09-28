@@ -72,7 +72,7 @@ export class WeatherMapComponent {
   }
 
   ngOnChanges() {
-    this.map?.remove();
+    //this.map?.remove();
     this.changeLocation(this.latitude, this.longitude, this.zoom);
   }
 }
