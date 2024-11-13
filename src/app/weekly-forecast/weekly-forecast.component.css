@@ -1,11 +1,16 @@
 #card {
-    
     margin-left: auto;
     margin-right: auto;
 }
 
 #thumbnail {
     width: 80px;
+}
+
+#date {
+  color: rgb(50, 50, 50) !important;
+  font-weight: 700 !important;
+  text-decoration: underline;
 }
 
 #details {

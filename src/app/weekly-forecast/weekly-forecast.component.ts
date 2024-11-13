@@ -93,11 +93,11 @@ export class WeeklyForecastComponent {
             pressure.push(this.weatherDataForecast.list[i]?.main?.pressure)
             var time = new Date(this.weatherDataForecast?.list[i]?.dt * 1000)
             this.nextDay.push(date)
-            if (format === this.newDate && this.datePipe.transform(time, 'HH:mm', 'en') === '14:00') {
+            if (format === this.newDate && (this.datePipe.transform(time, 'HH:mm', 'en') === '13:00') || (this.datePipe.transform(time, 'HH:mm', 'en') === '14:00')) {
               icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
               descriptions.push(this.weatherDataForecast.list[i]?.weather[0]?.description)
             }
-            if (format === this.newDate && this.datePipe.transform(time, 'HH:mm', 'en') === '23:00') {
+            if (format === this.newDate && (this.datePipe.transform(time, 'HH:mm', 'en') === '22:00') || (this.datePipe.transform(time, 'HH:mm', 'en') === '23:00')) {
               icons.push(this.weatherDataForecast.list[i]?.weather[0]?.icon)
             }
           }
@@ -108,6 +108,7 @@ export class WeeklyForecastComponent {
       this.averageTemp(data);
       this.maxPress(pressure)
       this.chooseIcon(icons)
+      console.log(icons)
       this.chooseDescription(descriptions);
       this.day = this.datePipe.transform(this.currentDate, 'EEEE', 'en');
     }
