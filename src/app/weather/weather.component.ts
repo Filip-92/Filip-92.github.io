@@ -61,18 +61,34 @@ export class WeatherComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
     onScroll(event) {
-      if (window.pageYOffset >= 270 && window.pageYOffset <= 600) {
-        this.fadeIn = true;
-      } 
-      if (window.pageYOffset >= 800 && window.pageYOffset <= 1200) {
-        this.fadeIn1 = true;
-      } 
-      if (window.pageYOffset >= 50 && window.pageYOffset <= 300) {
-        this.fadeIn = false;
+      if (this.innerWidth >= 1080) {
+        if (window.pageYOffset >= 270 && window.pageYOffset <= 600) {
+          this.fadeIn = true;
+        } 
+        if (window.pageYOffset >= 800 && window.pageYOffset <= 1200) {
+          this.fadeIn1 = true;
+        } 
+        if (window.pageYOffset >= 50 && window.pageYOffset <= 300) {
+          this.fadeIn = false;
+        }
+        if (window.pageYOffset >= 50 && window.pageYOffset <= 900) {
+          this.fadeIn1 = false;
+        }
+      } else {
+        if (window.pageYOffset >= 220 && window.pageYOffset <= 550) {
+          this.fadeIn = true;
+        } 
+        if (window.pageYOffset >= 700 && window.pageYOffset <= 1100) {
+          this.fadeIn1 = true;
+        } 
+        if (window.pageYOffset >= 50 && window.pageYOffset <= 250) {
+          this.fadeIn = false;
+        }
+        if (window.pageYOffset >= 50 && window.pageYOffset <= 750) {
+          this.fadeIn1 = false;
+        }
       }
-      if (window.pageYOffset >= 50 && window.pageYOffset <= 900) {
-        this.fadeIn1 = false;
-      }
+
   }
 
   constructor(private apiService: ApiService, private locationService: LocationService,
