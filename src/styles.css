@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-color: #1b395b;
+    background-color: black;
 }
 
 h3 {
@@ -31,4 +31,17 @@ p {
         p {
             font-size: 10px;
         }
+    }
+
+    input[type=text] {
+    border:none;
+    border-bottom: 1px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;     
+    }
+    
+    [placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease; 
+    text-indent: -100%;
+    opacity: 1;
     }

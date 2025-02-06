@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../_services/api.service';
 import { formatDate } from '@angular/common';
@@ -7,6 +7,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { LocationService } from '../_services/location.service';
 import { CookieService } from 'ngx-cookie-service';
 import { WeatherMapComponent } from '../weather-map/weather-map.component';
+import {
+  trigger,
+  state,
+  sequence,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+import { switchMap, catchError } from 'rxjs/operators'
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -19,8 +29,9 @@ export class SafePipe implements PipeTransform {
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css'],
+  styleUrls: ['./weather.component.css']
 })
+
 export class WeatherComponent implements OnInit {
   @ViewChild('widgetsContent') widgetsContent: ElementRef;
   protected weatherSearchForm: FormGroup;
@@ -38,17 +49,48 @@ export class WeatherComponent implements OnInit {
   protected sign: any;
   protected trustedUrl: string;
   protected moreCities: boolean;
+  innerWidth: any;
+  fadeIn: boolean = false;
+  fadeIn1: boolean;
+  hidden: boolean;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
+
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+    onScroll(event) {
+      if (window.pageYOffset >= 270 && window.pageYOffset <= 600) {
+        this.fadeIn = true;
+      } 
+      if (window.pageYOffset >= 800 && window.pageYOffset <= 1200) {
+        this.fadeIn1 = true;
+      } 
+      if (window.pageYOffset >= 50 && window.pageYOffset <= 300) {
+        this.fadeIn = false;
+      }
+      if (window.pageYOffset >= 50 && window.pageYOffset <= 900) {
+        this.fadeIn1 = false;
+      }
+  }
 
   constructor(private apiService: ApiService, private locationService: LocationService,
     private cookieService: CookieService) {
     
   }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+    console.log(el.scrollHeight)
+}
+
   ngOnInit(): void {
     this.initializeForm();
     this.currentDate = new Date();
     this.time = new Date();
     this.getMeme();
+    this.innerWidth = window.innerWidth;
     
     this.locationService.getPosition().then(pos=>
       {
@@ -121,11 +163,11 @@ export class WeatherComponent implements OnInit {
     .getForecast(latitude, longitude)
     .subscribe(response => {
       this.weatherDataForecast = response;
-      console.log(this.weatherDataForecast);
     });
   }
 
   sendToOpenWeatherLongTermForecast(latitude: any, longitude: any, days: number) {
+    console.log(latitude)
     this.apiService
     .getLongTermForecast(latitude, longitude, days)
     .subscribe(response => {

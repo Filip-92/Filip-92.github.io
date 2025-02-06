@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="text-right">
+    <!-- <div class="text-right">
         <button class="floating-btn" *ngIf="checkIfScrolled()" (click)="scrollToTop()">&#8593; Top</button>
-    </div>
+    </div> -->
 
     <div *ngIf="moreCities" class="card mt-3 mb-3">
         <app-weather-cities></app-weather-cities>
@@ -37,7 +37,6 @@
             (ngSubmit)="checkCoordinates()">
             <div id="form" class="row mt-4">
                 <div class="form-group col-8 col-md-9 col-md-8">
-                    <p id="label" class="text-left">Wpisz nazwę miasta:</p>
                     <input 
                         class="form-control" 
                         type="text"
@@ -47,14 +46,14 @@
                         formControlName="location"
                         >
                 </div>
-                <div id="buttons" class="text-left col-4 col-md-3 col-md-3">
+                <div class="text-left col-4 col-md-3 col-md-3">
                     <button type="submit" class="btn btn-success btn-small mb-3" [disabled]="!weatherSearchForm?.valid">
-                        Szukaj<i class="fa fa-search ml-2"></i>
+                        <i class="fa fa-search"></i>
                     </button>
                 </div>
             </div>
             <p *ngIf="longitude !== undefined && latitude !== undefined">
-                Długość: {{longitude | number:'1.0-3'}}  |  Szerokość: {{latitude | number:'1.0-3'}}
+                {{latitude | number:'1.0-3'}} <span *ngIf="longitude>0">N</span><span *ngIf="longitude<0">S</span>  | {{longitude | number:'1.0-3'}} <span *ngIf="longitude>0">E</span><span *ngIf="longitude<0">W</span>
             </p>
             <div class="text-left" *ngIf="weatherSearchForm?.touched && !weatherSearchForm?.valid">
                 <p id="error" *ngIf="validateControl('location') && hasError('location', 'required')">Należy wpisać nazwę miasta</p>
@@ -62,35 +61,43 @@
             </div>
         </form>
         </div>
+        <div class="col-lg-6 mt-4 mb-4" style="margin-left: auto; margin-right: auto;">
+            <app-icons [weatherDataIcon]="weatherData?.weather[0]?.icon"></app-icons>
+        </div>
     </div>
     <!-- <img src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=52.2413&lon=21.0718&zoom=7" alt=""> -->
-    <div class="col-lg-6 mt-4" style="margin-left: auto; margin-right: auto;">
-        <app-icons [weatherDataIcon]="weatherData?.weather[0]?.icon"></app-icons>
-    </div>
-    <h3 class="text-center mt-3 mb-4">
-        Godzinowo
-    </h3>
-    <div id="hourly" class="card mt-3">
+
+
+    <div id="hourly" class="card outline mt-3">
+        <h3 class="text-center mt-3 mb-4">
+            Godzinowo
+        </h3>
         <app-hourly-weather [weatherDataForecast]="weatherDataForecast"></app-hourly-weather>
     </div>
 
-    <div *ngIf="latitude !== undefined && longitude !== undefined">
-        <app-weather-map [latitude]="latitude" [longitude]="longitude"></app-weather-map>
+    <div (scroll)="onScroll($event)" [ngStyle]="{ 'visibility: hidden;': fadeIn }">
+        <div *ngIf="latitude !== undefined && longitude !== undefined" [ngClass]="{ 'fadeOut': !fadeIn, 'fadeIn': fadeIn }">
+            <app-weather-map [latitude]="latitude" [longitude]="longitude"></app-weather-map>
+        </div>
     </div>
 
-    <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-3">
-        <h3 class="mt-5 mb-4">Prognoza</h3>
-        <div class="card">
-            <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="1"></app-weekly-forecast>
-        </div>
-        <div class="card">
-            <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="2"></app-weekly-forecast>
-        </div>
-        <div class="card">
-            <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="3"></app-weekly-forecast>
-        </div>
-        <div class="card">
-            <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="4"></app-weekly-forecast>
+    <div (scroll)="onScroll($event)" [ngStyle]="{ 'visibility: hidden;': !fadeIn }">
+        <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-3" [ngClass]="{ 'fadeOut': !fadeIn1, 'fadeIn': fadeIn1 }">
+            <div class="container">
+                <h3 class="mt-5 mb-4">Prognoza</h3>
+                <div class="card">
+                    <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="1"></app-weekly-forecast>
+                </div>
+                <div class="card">
+                    <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="2"></app-weekly-forecast>
+                </div>
+                <div class="card">
+                    <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="3"></app-weekly-forecast>
+                </div>
+                <div class="card">
+                    <app-weekly-forecast [weatherDataForecast]="weatherDataForecast" [range]="range(0, 40, 1)" [days]="4"></app-weekly-forecast>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -102,7 +109,9 @@
         <img src="{{meme?.url}}" class="card-img-top" onError="this.src='https://memegenerator.net/img/images/14687350.jpg'" *ngIf="checkURL(meme?.url) && !meme?.url?.includes('youtube-nocookie') && meme?.url?.length < 1000"/>
         <video src="{{meme?.url}}" class="card-img-top" *ngIf="!checkURL(meme?.url) && !meme?.url?.includes('youtube-nocookie') && meme?.url?.length < 1000" controls></video>
         <button class="btn btn-small btn-danger mt-3 mb-3" (click)="getMeme()">Losuj<i class="fa fa-dice ml-2"></i></button>
+        <button class="btn byn-small btn-success inline ml-3" *ngIf="checkIfScrolled()" (click)="scrollToTop()">&#8593; Góra</button>
     </div>
     <div #target></div>
 </div>
 <!-- <a href="https://www.flaticon.com/free-icons/refresh" title="refresh icons">Refresh icons created by Freepik - Flaticon</a> -->
+

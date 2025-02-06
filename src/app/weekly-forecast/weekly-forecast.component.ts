@@ -108,7 +108,6 @@ export class WeeklyForecastComponent {
       this.averageTemp(data);
       this.maxPress(pressure)
       this.chooseIcon(icons)
-      console.log(icons)
       this.chooseDescription(descriptions);
       this.day = this.datePipe.transform(this.currentDate, 'EEEE', 'en');
     }
