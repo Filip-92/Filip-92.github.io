@@ -47,7 +47,7 @@ export class ApiService {
 
   getMeme() {
     return this.http.get(
-      'https://ddmemes.com.pl/api/memes/get-random-meme/'
+      'https://ddmemes.net.pl/api/memes/get-random-meme/'
     );
   }
 }

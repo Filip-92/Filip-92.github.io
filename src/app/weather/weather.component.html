@@ -2,6 +2,7 @@
     <!-- <div class="text-right">
         <button class="floating-btn" *ngIf="checkIfScrolled()" (click)="scrollToTop()">&#8593; Top</button>
     </div> -->
+    <button (click)="scrollToMeme()"></button>
 
     <div *ngIf="moreCities" class="card mt-3 mb-3">
         <app-weather-cities></app-weather-cities>
@@ -67,21 +68,18 @@
     </div>
     <!-- <img src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=52.2413&lon=21.0718&zoom=7" alt=""> -->
 
-
     <div id="hourly" class="card outline mt-3">
-        <h3 class="text-center mt-3 mb-4">
-            Godzinowo
-        </h3>
+        <h3 class="text-center mt-3 mb-4">Godzinowo</h3>
         <app-hourly-weather [weatherDataForecast]="weatherDataForecast"></app-hourly-weather>
     </div>
-
-    <div (scroll)="onScroll($event)" [ngStyle]="{ 'visibility: hidden;': fadeIn }">
+    
+    <div id="mapka" (scroll)="onScroll($event)" [ngStyle]="fadeIn ? {style} : {}">
         <div *ngIf="latitude !== undefined && longitude !== undefined" [ngClass]="{ 'fadeOut': !fadeIn, 'fadeIn': fadeIn }">
             <app-weather-map [latitude]="latitude" [longitude]="longitude"></app-weather-map>
         </div>
     </div>
 
-    <div (scroll)="onScroll($event)" [ngStyle]="{ 'visibility: hidden;': !fadeIn }">
+    <div id="forecast" (scroll)="onScroll($event)" [ngStyle]="fadeIn1 ? {style} : {}">
         <div *ngIf="weatherDataForecast !== undefined" class="text-center mt-3" [ngClass]="{ 'fadeOut': !fadeIn1, 'fadeIn': fadeIn1 }">
             <div class="container">
                 <h3 class="mt-5 mb-4">Prognoza</h3>

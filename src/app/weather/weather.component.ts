@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../_services/api.service';
-import { formatDate } from '@angular/common';
+import { formatDate, ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocationService } from '../_services/location.service';
@@ -51,24 +51,51 @@ export class WeatherComponent implements OnInit {
   protected moreCities: boolean;
   innerWidth: any;
   fadeIn: boolean = false;
+  fadeOut: boolean;
   fadeIn1: boolean;
+  fadeOut2: boolean;
   hidden: boolean;
+  style = { 'visibility': 'hidden' }
+  map: any;
+  forecast: any;
+  h1: any;
+  h2: any;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
   }
 
+//   @HostListener('window:scroll', ['$event']) // for window scroll events
+//   onScroll(event) {
+
+//     if (window.pageYOffset >= this.map.offsetHeight*100/this.h1) {
+//       this.fadeIn = true;
+//     } 
+//     if (window.pageYOffset < (this.map.offsetHeight*100/this.h1)) {
+//       this.fadeIn = false;
+//     } 
+//     if (window.pageYOffset >= (this.forecast.offsetHeight*100/this.h2)*10) {
+//       this.fadeIn1 = true;
+//     } 
+//     if (window.pageYOffset < (this.forecast.offsetHeight*100/this.h2)/2) {
+//       this.fadeIn1 = false;
+//     } 
+// }
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
     onScroll(event) {
       if (this.innerWidth >= 1080) {
-        if (window.pageYOffset >= 270 && window.pageYOffset <= 600) {
+        if (window.pageYOffset >= 350 && window.pageYOffset <= 600) {
+          this.style = { 'visibility': 'visible' }
+        } 
+        if (window.pageYOffset >= 300 && window.pageYOffset <= 600) {
           this.fadeIn = true;
         } 
         if (window.pageYOffset >= 800 && window.pageYOffset <= 1200) {
           this.fadeIn1 = true;
         } 
-        if (window.pageYOffset >= 50 && window.pageYOffset <= 300) {
+        if (window.pageYOffset > 50 && window.pageYOffset < 270) {
           this.fadeIn = false;
         }
         if (window.pageYOffset >= 50 && window.pageYOffset <= 900) {
@@ -78,13 +105,13 @@ export class WeatherComponent implements OnInit {
         if (window.pageYOffset >= 220 && window.pageYOffset <= 550) {
           this.fadeIn = true;
         } 
-        if (window.pageYOffset >= 700 && window.pageYOffset <= 1100) {
+        if (window.pageYOffset >= 600 && window.pageYOffset <= 1100) {
           this.fadeIn1 = true;
         } 
         if (window.pageYOffset >= 50 && window.pageYOffset <= 250) {
           this.fadeIn = false;
         }
-        if (window.pageYOffset >= 50 && window.pageYOffset <= 750) {
+        if (window.pageYOffset >= 50 && window.pageYOffset <= 700) {
           this.fadeIn1 = false;
         }
       }
@@ -92,8 +119,12 @@ export class WeatherComponent implements OnInit {
   }
 
   constructor(private apiService: ApiService, private locationService: LocationService,
-    private cookieService: CookieService) {
+    private cookieService: CookieService, private scroller: ViewportScroller, private el:ElementRef) {
     
+  }
+
+  scrollToMeme() {
+    this.scroller.scrollToAnchor('forecast');
   }
 
   scroll(el: HTMLElement) {
@@ -107,7 +138,13 @@ export class WeatherComponent implements OnInit {
     this.time = new Date();
     this.getMeme();
     this.innerWidth = window.innerWidth;
-    
+    this.map = document.getElementById('mapka');
+    this.h1 = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log(this.map.offsetHeight*100/this.h1);
+    this.forecast = document.getElementById('forecast');
+    this.h2 = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log(this.forecast.offsetHeight*100/this.h2);
+
     this.locationService.getPosition().then(pos=>
       {
          if (pos.lng !== undefined && pos.lat !== undefined) {
